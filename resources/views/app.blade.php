@@ -12,6 +12,9 @@
     {{-- Vite Css & JS --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    {{-- Livewire --}}
+    @livewireStyles
+
     {{-- Font --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +23,7 @@
 
 <body class="font-Inter">
     @yield('pages')
+    @livewireScripts
 </body>
 
 </html>
