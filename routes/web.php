@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('pages.homepage');
-})->name('homepage');
+Route::redirect('/', '/home');
+
+Route::get('/home', [HomepageController::class, 'home'])->name('homepage');
+Route::get('/destinasi-wisata', [HomepageController::class, 'destinasi'])->name('destinasi');
+
+Route::get('images/{filename}', [HomepageController::class, 'heroImg'])->name('hero');
