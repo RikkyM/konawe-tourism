@@ -17,5 +17,6 @@
             class="text-lg font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-[text-focus-in_2s_both] text-white sm:text-2xl md:text-4xl">
             Destinasi Wisata
         </div>
+        @elseif (request()->is('tentang-kami'))
     @endif
 </div>
