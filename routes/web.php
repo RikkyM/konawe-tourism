@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/home');
 
-Route::get('/home', [HomepageController::class, 'home'])->name('homepage');
-Route::get('/destinasi-wisata', [HomepageController::class, 'destinasi'])->name('destinasi');
+Route::get('home', [HomepageController::class, 'home'])->name('homepage');
+Route::get('destinasi-wisata', [HomepageController::class, 'destinasi'])->name('destinasi');
+Route::get('tentang-kami', [HomepageController::class, 'tentang'])->name('tentang-kami');
 
 Route::get('images/{filename}', [HomepageController::class, 'heroImg'])->name('hero');

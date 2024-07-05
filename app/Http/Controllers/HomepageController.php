@@ -15,5 +15,10 @@ class HomepageController extends Controller
     {
         return view('pages.destinasi');
     }
+
+    public function tentang()
+    {
+        return view('pages.tentang-kami');
+    }
     
 }

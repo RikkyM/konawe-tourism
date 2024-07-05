@@ -37,11 +37,12 @@
                 </button>
 
                 <div x-show="open"
-                    class="absolute left-1/2 top-[calc(100%_+_15px)] z-30 flex w-full max-w-[300px] -translate-x-1/2 flex-col space-y-4 rounded-md border border-black/30 bg-white p-3 shadow-lg transition-all sm:left-0 sm:top-[calc(100%_+_25px)] sm:translate-x-0"
+                    class="absolute left-1/2 top-[calc(100%_+_15px)] z-30 flex w-full max-w-[300px] -translate-x-1/2 flex-col space-y-4 rounded-md border border-black/30 bg-white p-3 shadow-[0_5px_5px_rgba(0,0,0,.5)] transition-all sm:left-0 sm:top-[calc(100%_+_25px)] sm:translate-x-0"
                     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
                     x-transition:enter-end="opacity-100" x-transition:leave="transition ease-out duration-300"
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                    <button class="h-max w-max bg-red-500 px-3 py-1.5 text-xs font-semibold text-white rounded">Reset</button>
+                    <button id="resetBtn"
+                        class="h-max w-max rounded bg-red-500 px-3 py-1.5 text-xs font-semibold text-white">Reset</button>
                     <label for="air" class="flex items-center gap-2 text-xs sm:text-sm">
                         <input type="checkbox" id="air" class="h-4 w-4 rounded p-2 text-blue-600" value="">
                         <span>Air Terjun</span>
@@ -195,4 +196,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const resetBtn = document.querySelector('#resetBtn')
+
+        resetBtn.addEventListener('click', () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+        })
+    </script>
 </div>

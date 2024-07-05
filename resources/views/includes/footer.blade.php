@@ -6,16 +6,16 @@
         <div class="space-y-4 md:col-start-1 md:row-start-1">
             <h2 class="font-bold capitalize">konawe tourism</h2>
             <ul class="space-y-3 text-xs">
-                <li class="border-b border-gray-500 pb-2"><a href="#">Home</a></li>
-                <li class="border-b border-gray-500 pb-2"><a href="#">Destinasi Wisata</a></li>
-                <li><a href="#">Tentang Kami</a></li>
+                <li class="border-b border-gray-500 pb-2"><a href="{{ route('homepage') }}" class="hover:text-teal-500 transition-all inline-block w-max">Home</a></li>
+                <li class="border-b border-gray-500 pb-2"><a href="{{ route('destinasi') }}" class="hover:text-teal-500 transition-all inline-block w-max">Destinasi Wisata</a></li>
+                <li><a href="{{ route('tentang-kami') }}" class="hover:text-teal-500 transition-all inline-block w-max">Tentang Kami</a></li>
             </ul>
         </div>
         <div class="space-y-4">
             <h2 class="font-bold capitalize">informasi kontak</h2>
             <ul class="space-y-3 text-xs">
                 <li class="border-b border-gray-500 pb-2"><a href="https://api.whatsapp.com/send?phone=6285155407399"
-                        class="flex items-center gap-2">
+                        class="flex items-center gap-2 hover:text-teal-500 transition-all inline-block w-max">
                         <span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="1.5"
@@ -23,16 +23,16 @@
                             </svg></span>
                         <span>+62-8515-5407-399</span></a></li>
                 <li class="border-b border-gray-500 pb-2"><a href="mailto:konawetourism@gmail.com"
-                        class="flex items-center gap-2">
+                        class="flex items-center gap-2 hover:text-teal-500 transition-all inline-block w-max">
                         <span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 32 32">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2"
                                     d="M29 9v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9m26 0a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2m26 0l-11.862 8.212a2 2 0 0 1-2.276 0L3 9" />
                             </svg></span>
                         <span>konawetourism@gmail.com</span></a></li>
-                <li><a href="#" class="flex items-center gap-2">
+                <li><a href="#" class="flex items-center gap-2 hover:text-teal-500 transition-all inline-block w-max">
                         <span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20">
-                                <path fill="white"
+                                <path fill="currentColor"
                                     d="M10 20S3 10.87 3 7a7 7 0 1 1 14 0c0 3.87-7 13-7 13zm0-11a2 2 0 1 0 0-4a2 2 0 0 0 0 4z" />
                             </svg></span>
                         <span>Lokasi</span></a></li>
