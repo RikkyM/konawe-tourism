@@ -1,4 +1,4 @@
-<footer class="grid grid-cols-1 bg-[#091E40] p-5 text-white space-y-10">
+<footer class="grid grid-cols-1 bg-[#091E40] p-5 text-white space-y-10 w-full">
     <div class="grid grid-cols-1 items-center gap-7 md:grid-cols-3 md:py-7 w-full max-w-[1024px] justify-self-center">
         <div class="mx-auto md:col-start-2">
             <img src="{{ asset('assets/logo/logo_footer.png') }}" alt="footer" class="w-full max-w-[80px] md:max-w-[130px]">

@@ -6,7 +6,7 @@
     @include('includes.navbar')
     <main>
         @include('includes.hero')
-        <div class="mx-auto flex w-full max-w-[1052px] gap-1 p-10 p-2 text-xs sm:text-sm">
+        <div class="flex gap-1 p-2 text-xs sm:px-14 sm:pt-14 sm:text-sm lg:text-lg">
             <a href="{{ route('homepage') }}" class="text-[#17A2B8]">Home</a>/<span
                 class="@if (request()->is('tentang-kami')) font-semibold @endif">Tentang Kami</span>
         </div>
@@ -15,7 +15,7 @@
             <h2 class="w-48 text-center font-bold sm:text-lg md:w-max lg:text-2xl">Tentang Kami</h2>
             <figure
                 class="flex w-[90%] flex-col p-3 md:max-w-3xl md:flex-row-reverse md:items-center md:justify-evenly md:gap-5 lg:w-full lg:max-w-5xl">
-                <img src="{{ asset('assets/logo/logo_header.png') }}" alt="gambar-1"
+                <img loading="lazy" src="{{ asset('assets/logo/logo_header.png') }}" alt="gambar-1"
                     class="mx-auto my-4 max-w-[150px] md:mx-0 lg:max-w-[300px]">
                 <figcaption class="mt-4 flex flex-col gap-4 md:h-full md:gap-5">
                     <h2 class="font-semibold md:text-lg lg:text-xl">KonaweTourism.com Adalah</h2>
@@ -29,17 +29,17 @@
             </figure>
         </div>
 
-        <div class="my-14">
+        <div class="mt-16 mb-32">
             <div class="text-center" data-aos="fade-up" data-aos-duration="500" data-aos-offset="230">
                 <h2 class="font-bold sm:text-lg lg:text-2xl">Meet the Team</h2>
                 <p class="text-[10px] sm:text-xs lg:text-sm">Tim Kami Siap Membantu Anda</p>
             </div>
             <div
-                class="flex w-full flex-col items-center gap-5 py-10 sm:flex-row sm:justify-center sm:gap-2.5 sm:gap-7 md:gap-5 lg:gap-14">
+                class="flex w-full flex-col items-center gap-5 py-10 sm:flex-row sm:justify-center sm:gap-1 sm:gap-7 md:gap-5 lg:gap-14">
                 <div class="order-2 sm:order-1" data-aos="fade-up" data-aos-duration="500" data-aos-offset="230">
                     <div
                         class="size-52 group relative rounded border border-black/10 bg-[#8DA7A5] shadow-md transition-all hover:mb-20 sm:hover:mb-0">
-                        <img src="{{ asset('assets/img/team/alim.png') }}" alt=""
+                        <img loading="lazy" src="{{ asset('assets/img/team/alim.png') }}" alt=""
                             class="absolute bottom-0 left-7 z-10 w-36 origin-bottom transform-gpu transition-transform group-hover:translate-x-4 group-hover:scale-[1.15]">
                         <div
                             class="absolute -bottom-[78px] left-1/2 flex w-max -translate-x-1/2 flex-col text-center opacity-0 transition-all group-hover:opacity-100">
@@ -77,7 +77,7 @@
                 <div class="order-1 sm:order-2" data-aos="fade-up" data-aos-duration="500" data-aos-offset="230">
                     <div
                         class="size-52 group relative rounded border border-black/10 bg-[#8DA7A5] shadow-md transition-all hover:mb-14 sm:hover:mb-0">
-                        <img src="{{ asset('assets/img/team/rikky.png') }}" alt=""
+                        <img loading="lazy" src="{{ asset('assets/img/team/rikky.png') }}" alt=""
                             class="absolute bottom-0 z-10 origin-bottom transform-gpu transition-transform group-hover:translate-x-5 group-hover:scale-[1.15]">
                         <div
                             class="absolute -bottom-[50px] left-1/2 flex w-max -translate-x-1/2 flex-col text-center opacity-0 transition-all group-hover:opacity-100">
@@ -112,9 +112,8 @@
                     </div>
                 </div>
                 <div class="order-3" data-aos="fade-up" data-aos-duration="500" data-aos-offset="230">
-                    <div class="size-52 group relative rounded border border-black/10 bg-[#8DA7A5] shadow-md transition-all hover:mb-14 sm:hover:mb-0"
-                        data-aos="fade-up" data-aos-duration="500" data-aos-offset="230">
-                        <img src="{{ asset('assets/img/team/fadil.png') }}" alt=""
+                    <div class="size-52 group relative rounded border border-black/10 bg-[#8DA7A5] shadow-md transition-all hover:mb-14 sm:hover:mb-0">
+                        <img loading="lazy" src="{{ asset('assets/img/team/fadil.png') }}" alt=""
                             class="absolute bottom-0 left-2 z-10 w-48 origin-bottom transform-gpu transition-transform group-hover:translate-x-4 group-hover:scale-[1.15]">
                         <div
                             class="absolute -bottom-[77px] left-1/2 flex w-max -translate-x-1/2 flex-col text-center opacity-0 transition-all group-hover:opacity-100">

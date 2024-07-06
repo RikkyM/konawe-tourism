@@ -1,5 +1,5 @@
 <div class="relative z-0 h-64 overflow-hidden rounded-b-xl md:h-80 lg:h-[450px]">
-    <img src="{{ asset('assets/img/background.png') }}" class="h-full w-full brightness-50" alt="logo">
+    <img loading="lazy" src="{{ asset('assets/img/background.png') }}" class="h-full w-full brightness-50" alt="logo">
     @if (request()->is('home'))
         <div
             class="absolute left-6 top-20 animate-[text-focus-in_2s_both] text-white md:left-10 md:top-1/2 md:-translate-y-1/2">
@@ -17,7 +17,7 @@
             class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-[text-focus-in_2s_both] text-lg font-bold text-white sm:text-2xl md:text-4xl">
             Destinasi Wisata
         </div>
-        @elseif (request()->is('tentang-kami'))
+    @elseif (request()->is('tentang-kami'))
         <div
             class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-[text-focus-in_2s_both] text-lg font-bold text-white sm:text-2xl md:text-4xl">
             Tentang Kami

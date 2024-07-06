@@ -43,15 +43,15 @@
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                     <button id="resetBtn"
                         class="h-max w-max rounded bg-red-500 px-3 py-1.5 text-xs font-semibold text-white">Reset</button>
-                    <label for="air" class="flex items-center gap-2 text-xs sm:text-sm w-max">
+                    <label for="air" class="flex w-max items-center gap-2 text-xs sm:text-sm">
                         <input type="checkbox" id="air" class="h-4 w-4 rounded p-2 text-blue-600" value="">
                         <span>Air Terjun</span>
                     </label>
-                    <label for="gunung" class="flex items-center gap-2 text-xs sm:text-sm w-max">
+                    <label for="gunung" class="flex w-max items-center gap-2 text-xs sm:text-sm">
                         <input type="checkbox" id="gunung" class="h-4 w-4 rounded p-2 text-blue-600" value="">
                         <span>Gunung</span>
                     </label>
-                    <label for="pantai" class="flex items-center gap-2 text-xs sm:text-sm w-max">
+                    <label for="pantai" class="flex w-max items-center gap-2 text-xs sm:text-sm">
                         <input type="checkbox" id="pantai" class="h-4 w-4 rounded p-2 text-blue-600" value="">
                         <span>Pantai</span>
                     </label>
@@ -75,7 +75,8 @@
             </p>
         </div>
         <div class="grid w-full w-full max-w-[1024px] grid-cols-1 justify-center gap-7 p-5 lg:grid-cols-3">
-            <div data-aos-offset="230"
+            {{-- Filter & Search --}}
+            <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
                 class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                 <div>
                     <div class="relative h-60 w-full overflow-hidden rounded-t-md">
@@ -95,16 +96,14 @@
                         <span class="mt-3 inline-block text-lg font-bold text-black duration-500">Puncak Ahuawali</span>
                         <div class="mt-5 flex items-center justify-between">
                             <a href="#"
-                                class="before:size-0 hover:before:size-20 relative inline-block w-56 w-max overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
+                                class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
                                 Detail
                             </a>
-                            <p class="text-black opacity-0 duration-500 group-hover:opacity-100">
-                                Rp. 10.000</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div data-aos-offset="230"
+            <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
                 class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                 <div>
                     <div class="relative h-60 w-full overflow-hidden rounded-t-md">
@@ -125,16 +124,14 @@
                             Ahuawali</span>
                         <div class="mt-5 flex items-center justify-between">
                             <a href="#"
-                                class="before:size-0 hover:before:size-20 relative inline-block w-56 w-max overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
+                                class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
                                 Detail
                             </a>
-                            <p class="opacity-0 duration-500 group-hover:text-black group-hover:opacity-100">
-                                Rp. 10.000</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div data-aos-offset="230"
+            <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
                 class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                 <div>
                     <div class="relative h-60 w-full overflow-hidden rounded-t-md">
@@ -155,16 +152,14 @@
                             Ahuawali</span>
                         <div class="mt-5 flex items-center justify-between">
                             <a href="#"
-                                class="before:size-0 hover:before:size-20 relative inline-block w-56 w-max overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
+                                class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
                                 Detail
                             </a>
-                            <p class="opacity-0 duration-500 group-hover:text-black group-hover:opacity-100">
-                                Rp. 10.000</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div data-aos-offset="230"
+            <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
                 class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                 <div>
                     <div class="relative h-60 w-full overflow-hidden rounded-t-md">
@@ -185,15 +180,15 @@
                             Ahuawali</span>
                         <div class="mt-5 flex items-center justify-between">
                             <a href="#"
-                                class="before:size-0 hover:before:size-20 relative inline-block w-56 w-max overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
+                                class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
                                 Detail
                             </a>
-                            <p class="opacity-0 duration-500 group-hover:text-black group-hover:opacity-100">
-                                Rp. 10.000</p>
                         </div>
                     </div>
                 </div>
             </div>
+            {{-- End Filter & Search --}}
+
         </div>
     </div>
 

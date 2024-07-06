@@ -5,8 +5,8 @@
             <li><a href="{{ route('homepage') }}" class="@if (request()->is('home')) font-bold @endif">Home</a></li>
             <li><a href="{{ route('destinasi') }}" class="@if (request()->is('destinasi-wisata')) font-bold @endif">Destinasi
                     Wisata</a></li>
-            <li><a href="{{ route('tentang-kami') }}">Tentang Kami</a></li>
-            <li><a href="#"
+            <li><a href="{{ route('tentang-kami') }}" class="@if (request()->is('tentang-kami')) font-bold @endif">Tentang Kami</a></li>
+            <li><a href="{{ route('login') }}"
                     class="before:size-0 hover:before:size-20 relative inline-block w-max rounded-sm bg-blue-500 px-2 py-1 text-base font-semibold text-white before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-white/20 before:transition-[height,width] before:duration-[.5s] before:content-['']">Login</a>
             </li>
         </ul>
@@ -26,7 +26,7 @@
                         class="@if (request()->is('tentang-kami')) font-bold before:content-[''] before:absolute before:-bottom-0.5 before:w-32 before:h-0.5 before:bg-[#3CB1C3] @endif relative inline-block w-max">Tentang
                         Kami</a>
                 </li>
-                <li class="w-max"><a href="#"
+                <li class="w-max"><a href="{{ route('login') }}"
                         class="inline-block w-max rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">Login</a>
                 </li>
             </ul>
