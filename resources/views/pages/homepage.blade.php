@@ -10,18 +10,17 @@
         <div class="mt-2 grid w-full place-items-center gap-3 p-3">
             <h2 class="w-48 text-center font-bold md:w-max lg:text-xl">Konawe Selatan - Surga Tersembunyi Bumi Anoa</h2>
             <figure
-                class="max-w-72 flex flex-col p-3 md:max-w-max md:flex-row-reverse md:items-center md:justify-evenly md:gap-5 lg:w-full lg:max-w-6xl lg:max-w-full">
-                <img src="{{ asset('assets/img/gambar-1.png') }}" alt="gambar-1"
-                    class="rounded-br-[35px] rounded-tl-[35px]">
+                class="w-[90%] flex flex-col p-3 md:max-w-max md:flex-row-reverse md:items-center md:justify-evenly md:gap-5 lg:w-full lg:max-w-6xl lg:max-w-full">
+                <img src="{{ asset('assets/img/gambar-1.png') }}" alt="gambar-1" class="rounded-br-[35px] rounded-tl-[35px] w-full max-w-72 mx-auto">
                 <figcaption class="mt-4 flex flex-col gap-4 md:h-full md:gap-5">
                     <h2 class="font-semibold md:text-lg lg:text-xl">Konawe adalah Permata Tersembunyi</h2>
-                    <p class="text-[10px] md:w-80 md:text-sm">Tidak ada tempat lain seperti Konawe Selatan. Kombinasi magis
+                    <p class="text-sm md:w-80 md:text-sm">Tidak ada tempat lain seperti Konawe Selatan. Kombinasi magis
                         dari budaya yang
                         kaya, penduduk yang
                         ramah, alam yang memukau, beragam aktivitas, iklim tropis, dan akomodasi yang nyaman. Konawe Selatan
                         adalah salah satu destinasi wisata tersembunyi di Indonesia dan itu memang layak. Ada banyak
                         keajaiban tersembunyi untuk setiap orang jelajahi dan temukan.</p>
-                    <p class="text-[11px] font-bold md:w-80 md:text-sm">KonaweTourism.com sepenuhnya berdedikasi untuk
+                    <p class="text-sm font-bold md:w-80 md:text-sm">KonaweTourism.com sepenuhnya berdedikasi untuk
                         mempermudah perencanaan perjalanan terbaik Anda di
                         Konawe Selatan.</p>
                 </figcaption>
@@ -30,7 +29,8 @@
 
 
         <div class="mt-2 grid w-full place-items-center gap-3 p-3">
-            <h2 class="font-bold md:text-lg lg:text-xl" data-aos="fade-up" data-aos-offset="190" data-aos-duration="500">Top Destinations</h2>
+            <h2 class="font-bold md:text-lg lg:text-xl" data-aos="fade-up" data-aos-offset="190" data-aos-duration="500">Top
+                Destinations</h2>
             <div class="flex w-full flex-col items-center justify-center gap-5 lg:flex-row">
                 <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
                     class="group relative h-80 w-64 overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">

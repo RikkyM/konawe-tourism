@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,4 @@ Route::get('home', [HomepageController::class, 'home'])->name('homepage');
 Route::get('destinasi-wisata', [HomepageController::class, 'destinasi'])->name('destinasi');
 Route::get('tentang-kami', [HomepageController::class, 'tentang'])->name('tentang-kami');
 
-Route::get('images/{filename}', [HomepageController::class, 'heroImg'])->name('hero');
+Route::get('login', [AuthController::class, 'login']);
