@@ -14,12 +14,12 @@
         <div class="mt-2 grid w-full place-items-center gap-3 p-3">
             <h2 class="w-48 text-center font-bold sm:text-lg md:w-max lg:text-2xl">Tentang Kami</h2>
             <figure
-                class="flex w-[90%] flex-col p-3 md:max-w-3xl md:flex-row-reverse md:items-center md:justify-evenly md:gap-5 lg:w-full lg:max-w-5xl">
+                class="flex w-[90%] flex-col p-3 md:max-w-3xl md:flex-row-reverse md:items-center lg:mt-5 md:justify-between md:gap-5 lg:w-full lg:max-w-5xl">
                 <img loading="lazy" src="{{ asset('assets/logo/logo_header.png') }}" alt="gambar-1"
-                    class="mx-auto my-4 max-w-[150px] md:mx-0 lg:max-w-[300px]">
+                    class="max-w-72 mx-auto w-full md:mx-0 lg:max-w-[400px] my-10 md:my-0">
                 <figcaption class="mt-4 flex flex-col gap-4 md:h-full md:gap-5">
-                    <h2 class="font-semibold md:text-lg lg:text-xl">KonaweTourism.com Adalah</h2>
-                    <p class="text-sm md:w-80 md:text-sm">Sebuah website proyek Pariwisata yang di kerjakan oleh sebuah
+                    <h2 class="font-semibold md:text-lg lg:text-xl mx-auto md:mx-0">KonaweTourism.com Adalah</h2>
+                    <p class="text-sm w-full md:max-w-[340px] lg:max-w-[450px] md:text-sm lg:text-lg">Sebuah website proyek Pariwisata yang di kerjakan oleh sebuah
                         tim ber anggotakan 3 orang yang berdedikasi penuh untuk meningkatkan potensi wisata daerah Konawe
                         Selatan dan dengan adanya website ini diharapkan dapat menjadi media promosi yang efektif untuk
                         menarik wisatawan dan mendorong pertumbuhan ekonomi lokal.</p>

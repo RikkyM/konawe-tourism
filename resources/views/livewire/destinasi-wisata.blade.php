@@ -74,7 +74,7 @@
             <p class="text-xs sm:text-sm">Ingin Menjelajah Ke Mana Hari Ini?
             </p>
         </div>
-        <div class="grid w-full w-full max-w-[1024px] grid-cols-1 justify-center gap-7 p-5 lg:grid-cols-3">
+        <div class="grid w-full w-full max-w-max grid-cols-1 md:grid-cols-2 justify-center gap-7 p-5 lg:grid-cols-3">
             {{-- Filter & Search --}}
             <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
                 class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">

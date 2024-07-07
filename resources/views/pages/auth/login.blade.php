@@ -17,7 +17,7 @@
                         <div class="flex flex-col gap-3">
                             <label for="email" class="flex flex-col gap-0.5 text-sm">
                                 <span class="@error('email') text-red-500 @enderror font-semibold">Email</span>
-                                <input type="text" id="email" name="email" autocomplete="off"
+                                <input type="email" id="email" name="email" autocomplete="off"
                                     class="@error('email') border-red-500 text-red-500 placeholder:text-red-500 focus:outline-red-500 @enderror rounded border border-gray-500/50 p-2 focus:outline-[1.2px] focus:outline-gray-500"
                                     value="{{ old('email') }}" placeholder="jhon.doe@email.com">
                                 @error('email')

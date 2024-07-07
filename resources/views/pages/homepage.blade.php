@@ -8,14 +8,14 @@
         @include('includes.hero')
 
         <div class="mt-2 grid w-full place-items-center gap-3 p-3">
-            <h2 class="w-48 text-center font-bold md:w-max lg:text-xl">Konawe Selatan - Surga Tersembunyi Bumi Anoa</h2>
+            <h2 class="text-center font-bold md:w-max lg:text-xl">Konawe Selatan - Surga Tersembunyi Bumi Anoa</h2>
             <figure
-                class="flex w-[90%] flex-col p-3 md:max-w-2xl md:flex-row-reverse md:items-center md:justify-evenly md:gap-5 lg:w-full lg:max-w-5xl">
+                class="flex w-[90%] flex-col p-3 md:max-w-3xl md:flex-row-reverse md:items-center lg:mt-5 md:justify-between md:gap-5 lg:w-full lg:max-w-5xl">
                 <img src="{{ asset('assets/img/gambar-1.png') }}" alt="gambar-1"
-                    class="max-w-72 mx-auto w-full rounded-br-[35px] rounded-tl-[35px] md:mx-0">
+                    class="max-w-72 mx-auto w-full rounded-br-[35px] rounded-tl-[35px] md:mx-0 lg:max-w-[450px]">
                 <figcaption class="mt-4 flex flex-col gap-4 md:h-full md:gap-5">
-                    <h2 class="font-semibold md:text-lg lg:text-xl">Konawe adalah Permata Tersembunyi</h2>
-                    <p class="text-sm md:w-80 md:text-sm">Tidak ada tempat lain seperti Konawe Selatan. Kombinasi magis
+                    <h2 class="font-semibold md:text-lg lg:text-xl mx-auto md:mx-0">Konawe adalah Permata Tersembunyi</h2>
+                    <p class="text-sm w-full md:max-w-[340px] lg:max-w-[450px] md:text-sm lg:text-lg">Tidak ada tempat lain seperti Konawe Selatan. Kombinasi magis
                         dari budaya yang
                         kaya, penduduk yang
                         ramah, alam yang memukau, beragam aktivitas, iklim tropis, dan akomodasi yang nyaman. Konawe Selatan
@@ -29,12 +29,12 @@
         </div>
 
 
-        <div class="mt-2 grid w-full place-items-center gap-3 p-3">
+        <div class="mt-2 grid w-full place-items-center gap-3">
             <h2 class="font-bold md:text-lg lg:text-xl" data-aos="fade-up" data-aos-offset="190" data-aos-duration="500">Top
                 Destinations</h2>
-            <div class="flex w-full flex-col items-center justify-center gap-5 lg:flex-row">
+            <div class="grid w-full max-w-max gap-5 md:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
-                    class="group relative h-80 w-64 overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
+                    class="group justify-self-center relative h-80 w-64 overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                     <div>
                         <div class="relative h-60 w-full overflow-hidden rounded-t-md">
                             <div class="group">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
-                    class="group relative h-80 w-64 overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
+                    class="group justify-self-center relative h-80 w-64 overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                     <div>
                         <div class="relative h-60 w-full overflow-hidden rounded-t-md">
                             <div class="group">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
-                    class="group relative h-80 w-64 overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
+                    class="group justify-self-center relative h-80 w-64 overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                     <div>
                         <div class="relative h-60 w-full overflow-hidden rounded-t-md">
                             <div class="group">
