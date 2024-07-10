@@ -3,7 +3,7 @@
     Login
 @endsection
 @section('pages')
-    <main class="h-screen w-screen px-5 pb-3 pt-5 lg:p-5">
+    <main class="h-screen w-screen px-5 pb-3 pt-5 lg:p-5 select-none">
         <div class="mx-auto flex h-full w-full flex-col items-center md:justify-center">
             <div
                 class="flex h-max w-full max-w-[400px] flex-col gap-6 md:justify-center lg:h-full lg:max-w-full lg:flex-row">
@@ -18,7 +18,7 @@
                             <label for="email" class="flex flex-col gap-0.5 text-sm">
                                 <span class="@error('email') text-red-500 @enderror font-semibold">Email</span>
                                 <input type="email" id="email" name="email" autocomplete="off"
-                                    class="@error('email') border-red-500 text-red-500 placeholder:text-red-500 focus:outline-red-500 @enderror rounded border border-gray-500/50 p-2 focus:outline-[1.2px] focus:outline-gray-500"
+                                    class="@error('email') border-red-500 text-red-500 placeholder:text-red-500 focus:outline-red-500 @enderror rounded border border-gray-500/50 p-2 focus:outline-1 overflow-hidden focus:outline-gray-500"
                                     value="{{ old('email') }}" placeholder="jhon.doe@email.com">
                                 @error('email')
                                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -27,17 +27,17 @@
                             <label for="password" class="flex flex-col gap-0.5 text-sm">
                                 <span class="@error('password') text-red-500 @enderror font-semibold">Password</span>
                                 <div
-                                    class="@error('password') border-red-500 text-red-500 placeholder:text-red-500 focus:outline-red-500 @enderror flex w-full items-center gap-2 rounded border border-gray-500/50 bg-white pr-2 focus-within:ring-[1.2px] focus-within:ring-gray-600">
-                                    <input type="password" id="password" name="password" class="w-full p-2 focus:outline-0"
+                                    class="@error('password') border-red-500 text-red-500 focus-within:ring-red-500 @enderror flex w-full items-center gap-2 rounded border border-gray-500/50 bg-transparent pr-2 focus-within:ring-1 overflow-hidden focus-within:ring-gray-600">
+                                    <input type="password" id="password" name="password" class="w-full p-2 focus:outline-0 @error('password') placeholder:text-red-500 @enderror"
                                         autocomplete="off" placeholder="At least 6 characters">
                                     <svg id="show" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 16 16" class="fill-current text-gray-500">
+                                        viewBox="0 0 16 16" class="fill-current text-gray-500 cursor-pointer @error('password') text-red-500 @enderror">
                                         <path fill="currentColor" fill-rule="evenodd"
                                             d="M1.87 8.515L1.641 8l.229-.515a6.708 6.708 0 0 1 12.26 0l.228.515l-.229.515a6.708 6.708 0 0 1-12.259 0M.5 6.876l-.26.585a1.328 1.328 0 0 0 0 1.079l.26.584a8.208 8.208 0 0 0 15 0l.26-.584a1.328 1.328 0 0 0 0-1.08l-.26-.584a8.208 8.208 0 0 0-15 0M9.5 8a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0M11 8a3 3 0 1 1-6 0a3 3 0 0 1 6 0"
                                             clip-rule="evenodd" />
                                     </svg>
                                     <svg id="hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 16 16" class="hidden fill-current text-gray-500">
+                                        viewBox="0 0 16 16" class="hidden fill-current text-gray-500 cursor-pointer">
                                         <path fill="currentColor"
                                             d="M8 11c-1.65 0-3-1.35-3-3s1.35-3 3-3s3 1.35 3 3s-1.35 3-3 3Zm0-5c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2Z" />
                                         <path fill="currentColor"

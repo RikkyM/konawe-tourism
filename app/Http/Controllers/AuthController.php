@@ -17,10 +17,11 @@ class AuthController extends Controller
     public function loginProcess(Request $req)
     {
         $req->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users,email',
             'password' => 'required'
         ], [
             'email.required' => 'Email perlu diisi',
+            'email.exists' => 'Email tidak ditemukan',
             'email.email' => 'Harus bertipe Email',
             'password.required' => 'Password perlu diisi'
         ]);
@@ -30,6 +31,8 @@ class AuthController extends Controller
             Auth::attempt(['email' => $req->email, 'password' => $req->password]);
             return redirect()->route('dashboard');
         }
+
+        return redirect()->back()->withErrors(['password' => 'Password salah']);
     }
 
     public function logout()

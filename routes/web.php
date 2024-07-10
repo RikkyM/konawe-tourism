@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/home');
+Route::redirect('/', '/');
 
-Route::get('home', [HomepageController::class, 'home'])->name('homepage');
+Route::get('/', [HomepageController::class, 'home'])->name('homepage');
 Route::get('destinasi-wisata', [HomepageController::class, 'destinasi'])->name('destinasi');
 Route::get('tentang-kami', [HomepageController::class, 'tentang'])->name('tentang-kami');
 
@@ -27,6 +28,7 @@ Route::post('login', [AuthController::class, 'loginProcess']);
 
 Route::middleware('auth')->group(function() {
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('wisata', [PageController::class, 'wisata'])->name('wisata');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

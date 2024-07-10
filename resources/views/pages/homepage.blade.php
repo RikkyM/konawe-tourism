@@ -29,7 +29,7 @@
         </div>
 
 
-        <div class="mt-2 grid w-full place-items-center gap-3">
+        <div class="my-10 grid w-full place-items-center gap-3">
             <h2 class="font-bold md:text-lg lg:text-xl" data-aos="fade-up" data-aos-offset="190" data-aos-duration="500">Top
                 Destinations</h2>
             <div class="grid w-full max-w-max gap-5 md:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -145,7 +145,4 @@
     </main>
 
     @include('includes.footer')
-
-    @push('script')
-    @endpush
 @endsection
