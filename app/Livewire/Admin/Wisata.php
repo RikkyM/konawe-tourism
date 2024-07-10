@@ -27,11 +27,6 @@ class Wisata extends Component
 
     public function mount()
     {
-        $this->inisialisasiIsChecked();
-    }
-
-    public function inisialisasiIsChecked()
-    {
         $wisatas = ModelsWisata::all();
         foreach ($wisatas as $wisata) {
             $this->isChecked[$wisata->id] = $wisata->favorit;
@@ -68,12 +63,13 @@ class Wisata extends Component
             $this->whatsapp = '';
             $this->gambar = '';
 
+            $this->isChecked[$wisata->id] = false;
+
             session()->flash('message', 'Data wisata berhasil ditambahkan!');
             $this->dispatch('show-notif');
             $this->dispatch('reset-map');
         }
 
-        $this->inisialisasiIsChecked();
     }
 
     public function edit($id)

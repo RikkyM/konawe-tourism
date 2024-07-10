@@ -28,13 +28,13 @@
             <div
                 class="flex rounded-md border border-gray-500/50 p-2 text-sm focus-within:ring-1 focus-within:ring-gray-500">
                 <input type="text" wire:model='formatWA' class="w-10 focus:outline-none" readonly tabindex="-1">
-                <input type="text" wire:model='whatsapp' id="whatsapp" value="+62" maxlength="11"
+                <input type="text" wire:model='whatsapp' id="whatsapp" maxlength="11" inputmode="numeric"
                     class="w-full focus:outline-none" placeholder="Masukkan nomor whatsapp">
             </div>
         </label>
         <label for="harga" class="flex flex-col gap-0.5 col-span-2">
             <span class="text-sm font-semibold text-gray-600">Harga</span>
-            <input type="text" wire:model='harga' id="harga" maxlength="11"
+            <input type="text" wire:model='harga' id="harga" maxlength="11" inputmode="numeric"
                 class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
                 placeholder="Rp. xxx.xxx">
         </label>
@@ -93,7 +93,7 @@
                 placeholder="Longitude" />
         </label>
 
-        <div class="col-span-2 flex justify-center gap-3">
+        <div class="col-span-4 flex justify-center gap-3">
             <button class="rounded bg-gray-500 px-5 py-2 font-semibold text-white" wire:loading wire:target="gambar"
                 disabled>Loading...</button>
             <button type="button" wire:click='tambahWisata' class="rounded bg-green-500 px-5 py-2 font-semibold text-white" wire:loading.remove

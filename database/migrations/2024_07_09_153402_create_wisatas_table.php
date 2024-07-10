@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('wisata', function (Blueprint $table) {
             $table->id();
             // $table->foreignId('id_kategori')->constrained('kategori')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama_wisata', 20);
+            $table->string('nama_wisata');
             $table->string('whatsapp');
             $table->string('harga', 6)->nullable();
-            $table->string('kategori');
             $table->text('deskripsi');
             $table->string('latitude');
             $table->string('longitude');

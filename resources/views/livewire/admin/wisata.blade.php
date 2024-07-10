@@ -25,13 +25,13 @@
             </button>
         </div>
     </section>
-    <section class="overflow-auto">
+    <section class="overflow-auto" wire:poll.1s>
         <table class="w-full">
             <thead>
                 <tr class="*:py-2">
                     <th>No.</th>
                     <th class="text-center">Gambar</th>
-                    <th class="text-left">Wisata</th>
+                    <th class="max-w-44 text-left">Wisata</th>
                     <th class="text-left">Kategori</th>
                     <th class="text-center">Tiket</th>
                     <th class="text-center">Aksi</th>
@@ -52,7 +52,8 @@
                                     class="max-w-20 mx-auto">
                             </td>
                             <td>{{ $item->nama_wisata }}</td>
-                            <td>{{ $item->deskripsi }}</td>
+                            {{-- <td>{{ $item->deskripsi }}</td> --}}
+                            <td></td>
                             <td class="text-center">{{ $item->harga != null ? currency_IDR($item->harga) : 'Gratis' }}
                             </td>
                             <td class="text-center">
@@ -88,18 +89,17 @@
                             </td>
                             <td class="text-center">
                                 <div class="relative mx-auto flex w-max items-center justify-center">
-                                    <button wire:click='favorit({{ $item->id }})' class="absolute inset-0">
-                                    </button>
+                                    <button wire:click='favorit({{ $item->id }})' class="absolute inset-0"></button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        class="{{ $isChecked[$item->id] ? 'fill-yellow-500' : 'fill-white' }}"
-                                        viewBox="0 0 24 24">
+                                        class="{{ isset($isChecked[$item->id]) && $isChecked[$item->id] ? 'fill-yellow-500' : 'fill-white' }}"
+                                        wire:poll viewBox="0 0 24 24">
                                         <path fill="curentColor" stroke="currentColor" stroke-linecap="round"
                                             stroke-linejoin="round" stroke-width="1.5"
                                             d="m12.495 18.587l4.092 2.15a1.044 1.044 0 0 0 1.514-1.106l-.783-4.552a1.045 1.045 0 0 1 .303-.929l3.31-3.226a1.043 1.043 0 0 0-.575-1.785l-4.572-.657A1.044 1.044 0 0 1 15 7.907l-2.088-4.175a1.044 1.044 0 0 0-1.88 0L8.947 7.907a1.044 1.044 0 0 1-.783.575l-4.51.657a1.044 1.044 0 0 0-.584 1.785l3.309 3.226a1.044 1.044 0 0 1 .303.93l-.783 4.55a1.044 1.044 0 0 0 1.513 1.107l4.093-2.15a1.043 1.043 0 0 1 .991 0" />
                                     </svg>
-
                                 </div>
                             </td>
+
                         </tr>
                     @endforeach
                 @endif
@@ -112,145 +112,5 @@
 </div>
 
 @script
-    <script>
-        const modalAdd = document.querySelector('#modalAdd')
-        const modal = document.querySelector('#modal');
-        const add = document.querySelector('#add');
-        const cancelButton = document.querySelector('#cancel');
-
-        Livewire.on('show-notif', () => {
-            console.log('asdasd');
-            add.classList.add('opacity-0', 'delay-0');
-            add.classList.remove('delay-[.3s]')
-            modal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
-            modal.classList.remove('pointer-events-auto');
-        })
-
-
-        modalAdd.addEventListener('click', () => {
-            modal.classList.toggle('opacity-0')
-            modal.classList.toggle('pointer-events-auto');
-            modal.classList.toggle('pointer-events-none');
-
-            add.classList.toggle('opacity-0');
-            add.classList.add('delay-[.3s]')
-            add.classList.remove('delay-0')
-
-            modal.classList.remove('delay-[.4s]')
-
-            modal.addEventListener('click', e => {
-                if (e.target == modal) {
-                    add.classList.add('opacity-0', 'delay-0');
-                    add.classList.remove('delay-[.3s]')
-                    modal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
-                    modal.classList.remove('pointer-events-auto');
-                }
-            })
-
-            cancelButton.addEventListener('click', () => {
-                if (marker) {
-                    map.removeLayer(marker);
-                    marker = null;
-                    document.getElementById('latitude').value = -4.19191;
-                    document.getElementById('longitude').value = 122.44854;
-                }
-
-                add.classList.add('opacity-0', 'delay-0');
-                add.classList.remove('delay-[.3s]')
-
-                modal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
-                modal.classList.remove('pointer-events-auto');
-            })
-        });
-
-        // Map
-        var map = L.map('map', {
-            attributionControl: false,
-            center: [-4.19191, 122.44854],
-            zoom: 12
-        });
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-        var marker;
-
-        map.on('click', function(e) {
-            var latitude = e.latlng.lat;
-            var longitude = e.latlng.lng;
-
-            @this.latitude = latitude
-            @this.longitude = longitude
-
-            if (marker) {
-                marker.setLatLng(e.latlng);
-            } else {
-                marker = L.marker(e.latlng).addTo(map);
-            }
-        });
-
-        // preview image
-        const imageInput = document.getElementById('image');
-        const preview = document.getElementById('preview');
-        const resetBtn = document.getElementById('reset-btn');
-        const text = document.querySelector('#text');
-
-        imageInput.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    preview.src = e.target.result;
-                    preview.classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-                text.classList.add('hidden')
-                resetBtn.classList.remove('hidden')
-            } else {
-                preview.src = '';
-                preview.classList.add('hidden');
-                text.classList.remove('hidden')
-            }
-        });
-
-        resetBtn.addEventListener('click', () => {
-            imageInput.value = '';
-            preview.src = '';
-            preview.classList.add('hidden');
-            text.classList.remove('hidden')
-            resetBtn.classList.add('hidden')
-        });
-
-        // format rupiah
-        function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, '').toString(),
-                split = number_string.split(','),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-            if (ribuan) {
-                separator = sisa ? '.' : '';
-                rupiah += separator + ribuan.join('.');
-            }
-
-            rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-            return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
-        }
-
-        const harga = document.querySelector('#harga');
-
-        harga.addEventListener('input', () => {
-            harga.value = formatRupiah(harga.value, 'Rp. ');
-        })
-
-        function NumberOnly(element) {
-            element.addEventListener('input', function() {
-                this.value = this.value.replace(/[^0-9]/g, '');
-            })
-        }
-
-        const whatsapp = document.querySelector("#whatsapp");
-
-        NumberOnly(whatsapp);
-    </script>
+    @include('components.admin-wisata-script')
 @endscript
