@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Wisata;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
 {
     public function home()
     {
-        return view('pages.homepage');
+        $topDestinasi = Wisata::limit(3)->where('favorit', 1)->inRandomOrder()->get();
+        return view('pages.homepage', compact('topDestinasi'));
     }
 
     public function destinasi()

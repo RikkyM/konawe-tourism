@@ -6,28 +6,50 @@
         </div>
     @endif
 
-    <section class="flex items-center justify-between p-2">
-        <label for="search"
-            class="flex items-center gap-2 rounded-md border border-gray-500/50 bg-white p-1 px-2 focus-within:ring-1 focus-within:ring-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
-                <g fill="none" stroke="currentColor">
-                    <circle cx="11" cy="11" r="6" />
-                    <path stroke-linecap="round" d="m20 20l-3-3" />
-                </g>
-            </svg>
-            <input type="text" id="search" wire:model.live="search" class="p-1.5 focus:outline-0">
-        </label>
-        <div class="px-3">
-            <button type="button"
-                class="size-5 flex select-none items-center justify-center rounded-md border-2 border-green-500 p-3 font-bold text-green-500"
-                id="modalAdd">
-                &plus;
-            </button>
-        </div>
-    </section>
-    <section class="overflow-auto" wire:poll.1s>
-        <table class="w-full">
-            <thead>
+
+    <section class="h-full overflow-auto">
+        <section class="sticky top-0 z-20 flex items-center justify-between bg-white p-2">
+            <label for="search"
+                class="flex items-center gap-2 rounded-md border border-gray-500/50 bg-white p-1 px-2 focus-within:ring-1 focus-within:ring-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24">
+                    <g fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="6" />
+                        <path stroke-linecap="round" d="m20 20l-3-3" />
+                    </g>
+                </svg>
+                <input type="text" id="search" wire:model.live="search" class="p-1.5 focus:outline-0">
+            </label>
+            <div class="flex items-center gap-5 px-3">
+                <div class="relative">
+                    <button type="button" id="kategoriAdd"
+                        class="relative flex max-h-5 select-none items-center justify-center rounded-md border-2 border-blue-500 p-3 font-bold text-blue-500">
+                        Kategori
+                    </button>
+                    <div class="pointer-events-none absolute right-0 top-10 flex h-36 w-72 flex-col items-center overflow-auto rounded border border-gray-500/30 bg-white opacity-0 shadow-md transition-all duration-[.5s]"
+                        id="modalKategori" wire:ignore.self>
+                        <button id="addKategoriBtn"
+                            class="sticky top-0 w-full bg-white py-2 font-semibold text-green-500">Tambah
+                            Kategori</button>
+                        <ul class="flex w-full flex-col items-start justify-start">
+                            <li class="w-full px-5 py-1">
+                                @foreach ($kategori as $item)
+                                    <button id="editKategoriBtn" wire:key='{{ $item->id }}'
+                                        wire:click='editKategori({{ $item->id }})'
+                                        class="flex w-full justify-start px-2 py-1 capitalize hover:bg-gray-500/30">{{ $item->kategori }}</button>
+                                @endforeach
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button"
+                    class="size-5 flex select-none items-center justify-center rounded-md border-2 border-green-500 p-3 font-bold text-green-500"
+                    id="modalAdd">
+                    &plus;
+                </button>
+            </div>
+        </section>
+        <table class="z-10 w-full">
+            <thead class="sticky top-[61.5px] z-10 bg-white">
                 <tr class="*:py-2">
                     <th>No.</th>
                     <th class="text-center">Gambar</th>
@@ -38,7 +60,7 @@
                     <th class="max-w-16 text-center">Top Destinasi</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody wire:poll.1s>
                 @if ($data->isEmpty())
                     <tr>
                         <td class="h-96 text-center" colspan="7">Tempat wisata tidak ditemukan</td>
@@ -48,17 +70,16 @@
                         <tr class="*:py-6 hover:bg-gray-500/30">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">
-                                <img src="{{ asset('storage/gambar-wisata/' . $item->gambar) }}" alt="gambar"
-                                    class="max-w-20 mx-auto">
+                                <img loading="lazy" src="{{ asset('storage/gambar-wisata/' . $item->gambar) }}"
+                                    alt="gambar" class="max-w-20 mx-auto">
                             </td>
                             <td>{{ $item->nama_wisata }}</td>
-                            {{-- <td>{{ $item->deskripsi }}</td> --}}
-                            <td></td>
+                            <td>{{ $item->kategori->kategori }}</td>
                             <td class="text-center">{{ $item->harga != null ? currency_IDR($item->harga) : 'Gratis' }}
                             </td>
                             <td class="text-center">
                                 <div class="flex items-center justify-center gap-5">
-                                    <button type="button" href="#">
+                                    {{-- <button type="button">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -68,8 +89,8 @@
                                                 d="M8.90983 8.5101C8.90983 8.69008 8.85638 8.86604 8.75638 9.01569C8.65639 9.16533 8.51434 9.28195 8.34806 9.35083C8.18178 9.41971 7.99882 9.43773 7.8223 9.40262C7.64578 9.36751 7.48363 9.28083 7.35636 9.15356C7.22909 9.0263 7.14245 8.86418 7.10734 8.68765C7.07222 8.51113 7.09022 8.32815 7.15909 8.16187C7.22797 7.99558 7.34453 7.85347 7.49418 7.75348C7.64383 7.65349 7.81981 7.6001 7.99979 7.6001C8.1193 7.6001 8.23765 7.62364 8.34806 7.66937C8.45847 7.7151 8.55872 7.78214 8.64323 7.86664C8.72773 7.95114 8.79476 8.05146 8.84049 8.16187C8.88622 8.27227 8.90983 8.3906 8.90983 8.5101Z"
                                                 fill="#00CE15" />
                                         </svg>
-                                    </button>
-                                    <button type="button" wire:click='edit({{ $item->id }})'>
+                                    </button> --}}
+                                    <button type="button" wire:key='{{ $item->id }}' wire:click='editWisata({{ $item->id }})'>
                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -77,22 +98,23 @@
                                                 fill="#2F80ED" />
                                         </svg>
                                     </button>
-                                    <a href="#">
+                                    <button wire:key='{{ $item->id }}' type="button" wire:click='delete_confirmation({{ $item->id }})'>
                                         <svg width="14" height="17" viewBox="0 0 14 17" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M2.54227 16.2996C2.07619 16.2996 1.67705 16.1221 1.34486 15.7672C1.01267 15.4122 0.846859 14.986 0.847424 14.4886V2.71661H0V0.905535H4.23712V0H9.32167V0.905535H13.5588V2.71661H12.7114V14.4886C12.7114 14.9866 12.5453 15.4131 12.2131 15.7681C11.8809 16.1231 11.482 16.3002 11.0165 16.2996H2.54227ZM11.0165 2.71661H2.54227V14.4886H11.0165V2.71661ZM4.23712 12.6775H5.93197V4.52768H4.23712V12.6775ZM7.62682 12.6775H9.32167V4.52768H7.62682V12.6775Z"
                                                 fill="#D94336" />
                                         </svg>
-                                    </a>
+                                    </button>
                                 </div>
                             </td>
                             <td class="text-center">
                                 <div class="relative mx-auto flex w-max items-center justify-center">
-                                    <button wire:click='favorit({{ $item->id }})' class="absolute inset-0"></button>
+                                    <button type="button" wire:click='favorit({{ $item->id }})' wire:key='{{ $item->id }}'
+                                        class="absolute inset-0"></button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         class="{{ isset($isChecked[$item->id]) && $isChecked[$item->id] ? 'fill-yellow-500' : 'fill-white' }}"
-                                        wire:poll viewBox="0 0 24 24">
+                                        viewBox="0 0 24 24">
                                         <path fill="curentColor" stroke="currentColor" stroke-linecap="round"
                                             stroke-linejoin="round" stroke-width="1.5"
                                             d="m12.495 18.587l4.092 2.15a1.044 1.044 0 0 0 1.514-1.106l-.783-4.552a1.045 1.045 0 0 1 .303-.929l3.31-3.226a1.043 1.043 0 0 0-.575-1.785l-4.572-.657A1.044 1.044 0 0 1 15 7.907l-2.088-4.175a1.044 1.044 0 0 0-1.88 0L8.947 7.907a1.044 1.044 0 0 1-.783.575l-4.51.657a1.044 1.044 0 0 0-.584 1.785l3.309 3.226a1.044 1.044 0 0 1 .303.93l-.783 4.55a1.044 1.044 0 0 0 1.513 1.107l4.093-2.15a1.043 1.043 0 0 1 .991 0" />
@@ -108,6 +130,8 @@
     </section>
 
     @include('components.wisata-modal')
+    @include('components.kategori-modal')
+    @include('components.delete-wisataModal')
 
 </div>
 

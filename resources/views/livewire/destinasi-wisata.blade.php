@@ -13,6 +13,7 @@
                     </svg>
                 </label>
                 <input name="search" id="search" type="text" placeholder="Cari Destinasi"
+                    wire:model.live='search'
                     class="w-full px-1.5 py-2 text-xs placeholder:text-[#828282] focus:outline-none lg:text-sm"
                     autocomplete="off">
             </div>
@@ -36,27 +37,21 @@
                     </span>
                 </button>
 
-                <div x-show="open"
+                <div x-show="open" x-cloak
                     class="absolute left-1/2 top-[calc(100%_+_15px)] z-30 flex w-full max-w-[300px] -translate-x-1/2 flex-col space-y-4 rounded-md border border-black/30 bg-white p-3 shadow-[0_3px_5px_rgba(0,0,0,.5)] transition-all sm:left-0 sm:top-[calc(100%_+_25px)] sm:translate-x-0"
                     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
                     x-transition:enter-end="opacity-100" x-transition:leave="transition ease-out duration-300"
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-                    <button id="resetBtn"
+                    <button id="resetBtn" wire:click='resetFilter'
                         class="h-max w-max rounded bg-red-500 px-3 py-1.5 text-xs font-semibold text-white">Reset</button>
-                    <label for="air" class="flex w-max items-center gap-2 text-xs sm:text-sm">
-                        <input type="checkbox" id="air" class="h-4 w-4 rounded p-2 text-blue-600" value="">
-                        <span>Air Terjun</span>
-                    </label>
-                    <label for="gunung" class="flex w-max items-center gap-2 text-xs sm:text-sm">
-                        <input type="checkbox" id="gunung" class="h-4 w-4 rounded p-2 text-blue-600" value="">
-                        <span>Gunung</span>
-                    </label>
-                    <label for="pantai" class="flex w-max items-center gap-2 text-xs sm:text-sm">
-                        <input type="checkbox" id="pantai" class="h-4 w-4 rounded p-2 text-blue-600" value="">
-                        <span>Pantai</span>
-                    </label>
+                    @foreach ($kategori as $item)
+                        <label class="flex w-max items-center gap-2 text-xs sm:text-sm">
+                            <input value="{{ $item->id }}" wire:model.live="selectKategori" type="checkbox" class="h-4 w-4 rounded p-2 text-blue-600"
+                                >
+                            <span>{{ $item->kategori }}</span>
+                        </label>
+                    @endforeach
                 </div>
-
             </div>
         </div>
     </div>
@@ -74,64 +69,39 @@
             <p class="text-xs sm:text-sm">Ingin Menjelajah Ke Mana Hari Ini?
             </p>
         </div>
-        <div class="grid w-full w-full max-w-max grid-cols-1 md:grid-cols-2 justify-center gap-7 p-5 lg:grid-cols-3">
+        <div class="grid w-full w-full max-w-max grid-cols-1 justify-center gap-7 p-5 md:grid-cols-2 lg:grid-cols-3">
             {{-- Filter & Search --}}
-            <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
-                class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
-                <div>
-                    <div class="relative h-60 w-full overflow-hidden rounded-t-md">
-                        <div class="group">
-                            <div class="image-container">
-                                <div class="h-60 w-full rounded-t-md bg-cover bg-center duration-500 group-hover:scale-110"
-                                    style="background-image: url({{ asset('assets/img/Puncak_Ahuawali/1.jpeg') }})">
+            @foreach ($results as $item)
+                <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500" wire:ignore.self
+                    class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
+                    <div>
+                        <div class="relative h-60 w-full overflow-hidden rounded-t-md">
+                            <div class="group">
+                                <div class="image-container">
+                                    <div class="h-60 w-full rounded-t-md bg-cover bg-center duration-500 group-hover:scale-110"
+                                        style="background-image: url({{ asset('storage/gambar-wisata/' . $item->gambar) }})">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div
-                        class="absolute -bottom-11 left-0 w-56 w-full p-5 py-5 duration-500 group-hover:-translate-y-10">
                         <div
-                            class="absolute left-0 -z-10 h-28 w-64 border opacity-0 duration-500 group-hover:bg-white group-hover:opacity-100">
-                        </div>
-                        <span class="mt-3 inline-block text-lg font-bold text-black duration-500">Puncak Ahuawali</span>
-                        <div class="mt-5 flex items-center justify-between">
-                            <a href="#"
-                                class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
-                                Detail
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
-                class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
-                <div>
-                    <div class="relative h-60 w-full overflow-hidden rounded-t-md">
-                        <div class="group">
-                            <div class="image-container">
-                                <div class="h-60 w-full rounded-t-md bg-cover bg-center duration-500 group-hover:scale-110"
-                                    style="background-image: url({{ asset('assets/img/Puncak_Ahuawali/1.jpeg') }})">
-                                </div>
+                            class="absolute -bottom-11 left-0 w-56 w-full p-5 py-5 duration-500 group-hover:-translate-y-10">
+                            <div
+                                class="absolute left-0 -z-10 h-28 w-64 border opacity-0 duration-500 group-hover:bg-white group-hover:opacity-100">
+                            </div>
+                            <span
+                                class="mt-3 inline-block text-lg font-bold text-black duration-500">{{ $item->nama_wisata }}</span>
+                            <div class="mt-5 flex items-center justify-between">
+                                <a href="#"
+                                    class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
+                                    Detail
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="absolute -bottom-11 left-0 w-56 w-full p-5 py-5 duration-500 group-hover:-translate-y-10">
-                        <div
-                            class="absolute left-0 -z-10 h-28 w-64 border opacity-0 duration-500 group-hover:bg-white group-hover:opacity-100">
-                        </div>
-                        <span class="mt-3 inline-block text-lg font-bold text-black duration-500">Puncak
-                            Ahuawali</span>
-                        <div class="mt-5 flex items-center justify-between">
-                            <a href="#"
-                                class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
-                                Detail
-                            </a>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
+            @endforeach
+            {{-- <div data-aos="fade-up" data-aos-offset="230" data-aos-duration="500"
                 class="group relative h-80 w-64 justify-self-center overflow-hidden rounded-md bg-white text-gray-50 shadow-[0_0_5px_rgba(0,0,0,.5)] duration-500">
                 <div>
                     <div class="relative h-60 w-full overflow-hidden rounded-t-md">
@@ -186,7 +156,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             {{-- End Filter & Search --}}
 
         </div>

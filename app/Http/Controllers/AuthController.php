@@ -18,12 +18,13 @@ class AuthController extends Controller
     {
         $req->validate([
             'email' => 'required|email|exists:users,email',
-            'password' => 'required'
+            'password' => 'required|min:6'
         ], [
             'email.required' => 'Email perlu diisi',
             'email.exists' => 'Email tidak ditemukan',
             'email.email' => 'Harus bertipe Email',
-            'password.required' => 'Password perlu diisi'
+            'password.required' => 'Password perlu diisi',
+            'password.min' => 'Password minimal 6 karakter'
         ]);
         
         $user = User::where('email', $req->email)->first();

@@ -1,4 +1,4 @@
-<header class="absolute sticky top-0 z-50 h-20 w-full bg-white">
+<header class="fixed top-0 z-50 h-20 w-full bg-white">
     <nav class="relative flex h-full w-full items-center justify-between px-5">
         <img src="{{ asset('assets/logo/logo_header.png') }}" alt="logo" class="w-20 md:w-32">
         <ul class="hidden items-center space-x-4 md:flex md:text-[16px] lg:text-base">

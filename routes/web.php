@@ -29,6 +29,7 @@ Route::post('login', [AuthController::class, 'loginProcess']);
 Route::middleware('auth')->group(function() {
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('wisata', [PageController::class, 'wisata'])->name('wisata');
+    Route::get('komentar', [PageController::class, 'komentar'])->name('komentar');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

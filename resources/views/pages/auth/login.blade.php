@@ -37,7 +37,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                     <svg id="hide" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 16 16" class="hidden fill-current text-gray-500 cursor-pointer">
+                                        viewBox="0 0 16 16" class="hidden fill-current text-gray-500 cursor-pointer @error('password') text-red-500 @enderror">
                                         <path fill="currentColor"
                                             d="M8 11c-1.65 0-3-1.35-3-3s1.35-3 3-3s3 1.35 3 3s-1.35 3-3 3Zm0-5c-1.1 0-2 .9-2 2s.9 2 2 2s2-.9 2-2s-.9-2-2-2Z" />
                                         <path fill="currentColor"

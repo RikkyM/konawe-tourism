@@ -1,4 +1,4 @@
-<div class="relative z-0 h-64 overflow-hidden rounded-b-xl md:h-80 lg:h-[500px] select-none">
+<div class="relative mt-20 z-0 h-64 overflow-hidden rounded-b-xl md:h-80 lg:h-[500px] select-none">
     <img loading="lazy" src="{{ asset('assets/img/background.png') }}" class="h-full w-full brightness-50 bg-center bg-cover" alt="logo">
     @if (request()->routeIs('homepage'))
         <div

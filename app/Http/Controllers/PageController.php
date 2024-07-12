@@ -17,4 +17,16 @@ class PageController extends Controller
             ]
         ]);
     }
+
+    public function komentar()
+    {
+        
+        return view('pages.admin.komentar', [
+            'title' => 'komentar',
+            'breadcrumbs' => [
+                ['name' => 'dashboard', 'url' => route('dashboard')],
+                ['name' => 'komentar'],
+            ]
+        ]);
+    }
 }

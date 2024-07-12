@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\Wisata;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -10,8 +12,9 @@ class DashboardController extends Controller
     {
         $title = 'dashboard';
 
-        
+        $wisata = Wisata::count();
+        $kategori = Kategori::count();
 
-        return view('pages/admin/dashboard', compact('title'));
+        return view('pages/admin/dashboard', compact('title', 'wisata', 'kategori'));
     }
 }
