@@ -5,6 +5,6 @@ import Alpine from 'alpinejs';
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-AOS.init();
 Alpine.start();
+AOS.init();
 window.L = L;

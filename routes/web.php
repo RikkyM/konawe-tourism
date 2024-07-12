@@ -22,6 +22,7 @@ Route::redirect('/', '/');
 Route::get('/', [HomepageController::class, 'home'])->name('homepage');
 Route::get('destinasi-wisata', [HomepageController::class, 'destinasi'])->name('destinasi');
 Route::get('tentang-kami', [HomepageController::class, 'tentang'])->name('tentang-kami');
+Route::get('/detail/{id}', [HomepageController::class, 'detail'])->name('detail');
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'loginProcess']);

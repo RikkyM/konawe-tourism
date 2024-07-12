@@ -222,11 +222,20 @@
         toggleKategori();
     })
 
+    const notif = document.querySelector('#notif');
+
     Livewire.on('kategori', () => {
         addKategoriForm.classList.add('opacity-0', 'delay-0');
         addKategoriForm.classList.remove('delay-[.3s]');
         addKategoriModal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
         addKategoriModal.classList.remove('pointer-events-auto');
+
+        notif.classList.remove('opacity-0');
+        notif.classList.remove('-translate-y-7');
+        setTimeout(() => {
+            notif.classList.add('opacity-0');
+            notif.classList.add('-translate-y-7');
+        }, 3000);
     })
 
     Livewire.on('openWisataModal', () => {
@@ -241,11 +250,20 @@
         modal.classList.remove('delay-[.4s]')
     })
 
+    const notifEdit = document.querySelector('#notifEdit');
+
     Livewire.on('kategoriEdit', () => {
         editKategoriForm.classList.add('opacity-0', 'delay-0');
         editKategoriForm.classList.remove('delay-[.3s]');
         editKategoriModal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
         editKategoriModal.classList.remove('pointer-events-auto');
+
+        notifEdit.classList.remove('opacity-0');
+        notifEdit.classList.remove('-translate-y-7');
+        setTimeout(() => {
+            notifEdit.classList.add('opacity-0');
+            notifEdit.classList.add('-translate-y-7');
+        }, 3000);
     })
 
     Livewire.on('openEdit', () => {
@@ -261,7 +279,7 @@
     })
 
     editKategoriModal.addEventListener('click', (e) => {
-        if(e.target == editKategoriModal) {
+        if (e.target == editKategoriModal) {
             editKategoriForm.classList.add('opacity-0', 'delay-0');
             editKategoriForm.classList.remove('delay-[.3s]');
             editKategoriModal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
@@ -412,6 +430,8 @@
         });
     });
 
+    const wisata = document.querySelector('#wisata');
+
     Livewire.on('show-notif', () => {
         resetModal();
         closeModal()
@@ -420,7 +440,16 @@
         preview.classList.add('hidden');
         text.classList.remove('hidden')
         resetBtn.classList.add('hidden')
+
+        wisata.classList.remove('opacity-0');
+        wisata.classList.remove('-translate-y-7');
+        setTimeout(() => {
+            wisata.classList.add('opacity-0');
+            wisata.classList.add('-translate-y-7');
+        }, 3000);
     })
+
+    const wisataEdit = document.querySelector('#wisataEdit');
 
     Livewire.on('show-notifEdit', () => {
         edit.classList.add('opacity-0', 'delay-0');
@@ -444,6 +473,13 @@
         previewEdit.classList.add('hidden');
         textEdit.classList.remove('hidden')
         resetBtnEdit.classList.add('hidden')
+
+        wisataEdit.classList.remove('opacity-0');
+        wisataEdit.classList.remove('-translate-y-7');
+        setTimeout(() => {
+            wisataEdit.classList.add('opacity-0');
+            wisataEdit.classList.add('-translate-y-7');
+        }, 3000);
     })
 
     const deleteModal = document.querySelector('#deleteModal');
@@ -484,13 +520,19 @@
         }
     })
 
+    const deleteNotif = document.querySelector('#deleteNotif');
+
     Livewire.on('delete', () => {
         del.classList.add('opacity-0', 'delay-0');
         del.classList.remove('delay-[.3s]');
         deleteModal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
         deleteModal.classList.remove('pointer-events-auto');
-        dl.forEach(item => {
-            console.log(item);
-        })
+
+        deleteNotif.classList.remove('opacity-0');
+        deleteNotif.classList.remove('-translate-y-7');
+        setTimeout(() => {
+            deleteNotif.classList.add('opacity-0');
+            deleteNotif.classList.add('-translate-y-7');
+        }, 3000);
     })
 </script>

@@ -41,7 +41,7 @@
         </label>
         <label for="harga" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Harga <span>(Opsional)</span></span>
-            <input type="text" required wire:model='harga' id="harga" maxlength="11" inputmode="numeric"
+            <input type="text" wire:model='harga' id="harga" maxlength="11" inputmode="numeric"
                 class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
                 placeholder="Rp. xxx.xxx">
             @error('harga')

@@ -22,5 +22,11 @@ class HomepageController extends Controller
     {
         return view('pages.tentang-kami');
     }
+    public function detail($id) {
+
+        $detail = Wisata::find($id);
+
+        return view('pages.detail', compact('detail'));
+    }
     
 }

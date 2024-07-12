@@ -94,7 +94,7 @@
                                 <span
                                     class="mt-3 inline-block text-lg font-bold text-black duration-500">{{ $item->nama_wisata }}</span>
                                 <div class="mt-5 flex items-center justify-between">
-                                    <a href="#"
+                                    <a href="{{ route('detail', $item->id) }}"
                                         class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
                                         Detail
                                     </a>

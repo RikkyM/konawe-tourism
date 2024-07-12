@@ -1,11 +1,39 @@
 <div class="h-full overflow-auto bg-white">
 
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
+    <div class="fixed left-1/2 top-14 z-50 flex -translate-x-1/2 flex-col gap-3">
+        <div id="notif" wire:ignore.self
+            class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
+            Berhasil menambah kategori
         </div>
-    @endif
+    </div>
 
+    <div class="fixed left-1/2 top-14 z-50 flex -translate-x-1/2 flex-col gap-3">
+        <div id="notifEdit" wire:ignore.self
+            class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
+            Kategori berhasil diubah
+        </div>
+    </div>
+
+    <div class="fixed left-1/2 top-14 z-50 flex -translate-x-1/2 flex-col gap-3">
+        <div id="wisata" wire:ignore.self
+            class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
+            Berhasil menambah wisata
+        </div>
+    </div>
+
+    <div class="fixed left-1/2 top-14 z-50 flex -translate-x-1/2 flex-col gap-3">
+        <div id="wisataEdit" wire:ignore.self
+            class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
+            Wisata berhasil diubah
+        </div>
+    </div>
+
+    <div class="fixed left-1/2 top-14 z-50 flex -translate-x-1/2 flex-col gap-3">
+        <div id="deleteNotif" wire:ignore.self
+            class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
+            Wisata berhasil dihapus
+        </div>
+    </div>
 
     <section class="h-full overflow-auto">
         <section class="sticky top-0 z-20 flex items-center justify-between bg-white p-2">
@@ -90,7 +118,8 @@
                                                 fill="#00CE15" />
                                         </svg>
                                     </button> --}}
-                                    <button type="button" wire:key='{{ $item->id }}' wire:click='editWisata({{ $item->id }})'>
+                                    <button type="button" wire:key='{{ $item->id }}'
+                                        wire:click='editWisata({{ $item->id }})'>
                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -98,7 +127,8 @@
                                                 fill="#2F80ED" />
                                         </svg>
                                     </button>
-                                    <button wire:key='{{ $item->id }}' type="button" wire:click='delete_confirmation({{ $item->id }})'>
+                                    <button wire:key='{{ $item->id }}' type="button"
+                                        wire:click='delete_confirmation({{ $item->id }})'>
                                         <svg width="14" height="17" viewBox="0 0 14 17" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -110,8 +140,8 @@
                             </td>
                             <td class="text-center">
                                 <div class="relative mx-auto flex w-max items-center justify-center">
-                                    <button type="button" wire:click='favorit({{ $item->id }})' wire:key='{{ $item->id }}'
-                                        class="absolute inset-0"></button>
+                                    <button type="button" wire:click='favorit({{ $item->id }})'
+                                        wire:key='{{ $item->id }}' class="absolute inset-0"></button>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         class="{{ isset($isChecked[$item->id]) && $isChecked[$item->id] ? 'fill-yellow-500' : 'fill-white' }}"
                                         viewBox="0 0 24 24">

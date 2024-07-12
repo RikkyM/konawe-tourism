@@ -11,6 +11,13 @@ class Ulasan extends Component
 
     public function tambahKomentar()
     {
+        $this->validate([
+            'nama' => 'required',
+            'komentar' => 'required'
+        ], [
+            'nama.required' => 'Nama perlu diisi',
+            'komentar.required' => 'Komentar perlu diisi'
+        ]);
         $komentar = new Komentar();
         $komentar->nama = $this->nama;
         $komentar->komentar = $this->komentar;

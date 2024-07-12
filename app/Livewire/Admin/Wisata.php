@@ -40,7 +40,6 @@ class Wisata extends Component
         $this->validate([
             'nama_wisata' => 'required|max:255',
             'data_kategori' => 'required',
-            'harga' => 'required',
             'deskripsi' => 'required',
             'gambar' => 'required|image|max:5120',
             'latitude' => 'required',
@@ -49,7 +48,6 @@ class Wisata extends Component
         ], [
             'nama_wisata.required' => 'Nama wisata perlu diisi',
             'data_kategori.required' => 'Kategori perlu diisi',
-            'harga.required' => 'Harga perlu diisi',
             'deskripsi.required' => 'Deskripsi perlu diisi',
             'gambar.required' => 'Gambar perlu diisi',
             'gambar.max' => 'Maksimal ukuran gambar 5MB',
@@ -113,7 +111,6 @@ class Wisata extends Component
         $this->validate([
             'nama_wisata' => 'required|max:255',
             'data_kategori' => 'required',
-            'harga' => 'required',
             'deskripsi' => 'required',
             'gambar' => 'max:5120',
             'latitude' => 'required',
@@ -122,7 +119,6 @@ class Wisata extends Component
         ], [
             'nama_wisata.required' => 'Nama wisata perlu diisi',
             'data_kategori.required' => 'Kategori perlu diisi',
-            'harga.required' => 'Harga perlu diisi',
             'deskripsi.required' => 'Deskripsi perlu diisi',
             'gambar.max' => 'Maksimal ukuran gambar 5MB',
             'latitude.required' => 'Lokasi perlu diisi',
