@@ -21,8 +21,8 @@
                         <span class="bg-white rounded-md size-10 inline-block flex items-center justify-center">{{ $kategori }}</span>
                     </div>
                     <div class="w-full h-36 bg-[#FB8136] flex items-center px-5 text-2xl rounded-md font-semibold justify-between">
-                        <span class="text-white">Kategori</span>
-                        <span class="bg-white rounded-md size-10 inline-block flex items-center justify-center">{{ $kategori }}</span>
+                        <span class="text-white">Komentar</span>
+                        <span class="bg-white rounded-md size-10 inline-block flex items-center justify-center">{{ $komentar }}</span>
                     </div>
                 </div>
             </section>

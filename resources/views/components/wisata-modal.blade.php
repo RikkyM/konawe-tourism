@@ -123,8 +123,6 @@
     </form>
 </div>
 
-
-
 <div id="modalEditWisata" wire:ignore.self
     class="pointer-events-none absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center overflow-auto bg-black/30 py-10 opacity-0 backdrop-blur-sm transition-all">
 
@@ -138,6 +136,9 @@
             <input type="text" wire:model='nama_wisata' id="nama_wisata"
                 class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
                 placeholder="Masukkan nama wisata">
+            @error('nama_wisata')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </label>
         <label for="kategori" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Kategori</span>
@@ -148,6 +149,9 @@
                     <option value="{{ $c->id }}">{{ $c->kategori }}</option>
                 @endforeach
             </select>
+            @error('kategori')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </label>
         <label for="whatsapp" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">No. Whatsapp</span>
@@ -157,18 +161,27 @@
                 <input type="text" wire:model='whatsapp' id="whatsapp" maxlength="11" inputmode="numeric"
                     class="w-full focus:outline-none" placeholder="Masukkan nomor whatsapp">
             </div>
+            @error('whatsapp')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </label>
         <label for="harga" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Harga <span>(Opsional)</span></span>
             <input type="text" wire:model='harga' id="harga" maxlength="11" inputmode="numeric"
                 class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
                 placeholder="Rp. xxx.xxx">
+            @error('harga')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </label>
         <label for="deskripsi" class="col-span-4 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Deskripsi</span>
             <textarea id="deskripsi"
                 class="h-36 resize-none rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
                 wire:model='deskripsi' placeholder="Masukkan deskripsi wisata"></textarea>
+            @error('deskripsi')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </label>
 
         <div class="col-span-2 flex flex-col items-center">
@@ -178,19 +191,21 @@
             <div class="h-44 w-full overflow-hidden rounded-sm border border-gray-500/50">
                 <div id="mapEdit" class="h-full w-full" wire:ignore></div>
             </div>
+            @error('latitude')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </div>
 
-        <label for="image" class="col-span-2" wire:ignore>
-            <div class="my-0.5 flex justify-between text-sm font-semibold text-gray-600">
+        <label for="imageEdit" class="col-span-2" wire:ignore.self>
+            <div wire:ignore class="my-0.5 flex justify-between text-sm font-semibold text-gray-600">
                 <span class="text-sm font-semibold text-gray-600">Gambar</span>
                 <span><button type="button" id="reset-btnEdit" class="capitalize text-red-500">reset</button></span>
             </div>
             <div class="relative h-44 w-full rounded-lg border-2 border-dashed border-gray-300 p-6" id="dropzone">
-
                 <input id="imageEdit" wire:model='gambar' type="file"
                     class="absolute inset-0 z-50 h-full w-full opacity-0" accept=".jpg,.jpeg,.png" />
 
-                <div class="text-center" id="textEdit">
+                <div class="text-center" id="textEdit" wire:ignore>
                     <img class="mx-auto h-12 w-12" src="https://www.svgrepo.com/show/357902/image-upload.svg"
                         alt="logo">
 
@@ -206,8 +221,7 @@
                     </p>
                 </div>
 
-                <p>{{ $gambar }}</p>
-                <img src="" class="mx-auto hidden max-h-full" id="previewEdit">
+                <img wire:ignore.self src="" class="mx-auto hidden max-h-full" id="previewEdit">
             </div>
         </label>
 

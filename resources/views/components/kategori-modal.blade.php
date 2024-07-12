@@ -10,6 +10,9 @@
             <input autocomplete="off" type="text" wire:model='kategori_wisata' id="kategori_wisata"
                 class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
                 placeholder="Masukkan kategori wisata">
+            @error('kategori_wisata')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </label>
 
         <div class="col-span-4 flex justify-center gap-3">
@@ -33,6 +36,9 @@
             <input type="text" wire:model='kategori_wisata' id="kategori_wisata" required
                 class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
                 placeholder="Masukkan kategori wisata">
+            @error('kategori_wisata')
+                <p class="text-sm text-red-500">{{ $message }}</p>
+            @enderror
         </label>
 
         <div class="col-span-4 flex justify-center gap-3">

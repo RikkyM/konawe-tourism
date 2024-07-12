@@ -13,7 +13,7 @@ class DestinasiWisata extends Component
 
     public function resetFilter()
     {
-        $this->selectKategori = '';
+        $this->selectKategori = [];
     }
 
     public function getFilteredResults()

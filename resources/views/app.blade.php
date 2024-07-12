@@ -35,8 +35,9 @@
 
     @yield('pages')
 
-    @livewireScripts
     @stack('script')
+    @livewireScripts
+    @livewireScriptConfig
 </body>
 
 </html>

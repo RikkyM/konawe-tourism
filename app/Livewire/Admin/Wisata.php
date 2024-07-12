@@ -110,6 +110,25 @@ class Wisata extends Component
 
     public function updateWisata()
     {
+        $this->validate([
+            'nama_wisata' => 'required|max:255',
+            'data_kategori' => 'required',
+            'harga' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'max:5120',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'whatsapp' => 'required',
+        ], [
+            'nama_wisata.required' => 'Nama wisata perlu diisi',
+            'data_kategori.required' => 'Kategori perlu diisi',
+            'harga.required' => 'Harga perlu diisi',
+            'deskripsi.required' => 'Deskripsi perlu diisi',
+            'gambar.max' => 'Maksimal ukuran gambar 5MB',
+            'latitude.required' => 'Lokasi perlu diisi',
+            'whatsapp.required' => 'Whatsapp perlu diisi'
+        ]);
+
         $id = $this->wisata_id;
         $wisata = ModelsWisata::find($id);
         $new_photo_name = $wisata->gambar;
@@ -149,6 +168,12 @@ class Wisata extends Component
 
     public function tambahKategoriWisata()
     {
+        $this->validate([
+            'kategori_wisata' => 'required',
+        ], [
+            'kategori_wisata.required' => 'Kategori perlu diisi',
+        ]);
+
         $kategori = new Kategori();
         $kategori->kategori = $this->kategori_wisata;
         $kategori->save();

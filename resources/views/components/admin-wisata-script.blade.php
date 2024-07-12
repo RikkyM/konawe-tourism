@@ -260,6 +260,18 @@
         editKategoriModal.classList.remove('delay-[.4s]')
     })
 
+    editKategoriModal.addEventListener('click', (e) => {
+        if(e.target == editKategoriModal) {
+            editKategoriForm.classList.add('opacity-0', 'delay-0');
+            editKategoriForm.classList.remove('delay-[.3s]');
+            editKategoriModal.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
+            editKategoriModal.classList.remove('pointer-events-auto');
+        }
+    })
+
+
+
+
     const modalEditWisata = document.querySelector('#modalEditWisata');
     const edit = document.querySelector("#edit");
     const cancelEditWisata = document.querySelector('#cancelEditWisata');
