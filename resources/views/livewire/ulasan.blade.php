@@ -3,7 +3,6 @@
         <div id="alertNotif" wire:ignore.self
             class="pointer-events-none translate-x-5 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
             @if (Session::has('message'))
-                {{-- {{ Session::get('message') }} --}}
                 {{ session('message') }}
             @endif
         </div>
@@ -28,7 +27,7 @@
                 </label>
                 <label for="komentar" class="relative left-0 flex h-max w-full flex-col">
                     <textarea wire:model='komentar' id="komentar" rows="5" placeholder=""
-                        class="peer w-full rounded-md border border-black/30 p-2"></textarea>
+                        class="peer w-full min-h-20 max-h-32 rounded-md border border-black/30 p-2"></textarea>
                     <span
                         class="absolute -top-2 left-2 h-max w-max bg-white px-0.5 text-xs transition-[font,inset] peer-placeholder-shown:inset-y-2 peer-placeholder-shown:text-base peer-focus:-top-2 peer-focus:text-xs">Komentar</span>
                     @error('komentar')

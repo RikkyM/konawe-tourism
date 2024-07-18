@@ -7,14 +7,14 @@
                     Wisata</a></li>
             <li><a href="{{ route('tentang-kami') }}" class="@if (request()->is('tentang-kami')) font-bold @endif">Tentang
                     Kami</a></li>
-            <li>
+            {{-- <li>
                 @if (Auth::check())
                     <a href="{{ route('dashboard') }}" class="w-max rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">{{ Auth::user()->name }}</a>
                 @else
                 <a href="{{ route('login') }}"
                     class="before:size-0 hover:before:size-20 relative inline-block w-max rounded-sm bg-blue-500 px-2 py-1 text-base font-semibold text-white before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-white/20 before:transition-[height,width] before:duration-[.5s] before:content-['']">Login</a>
                 @endif
-            </li>
+            </li> --}}
         </ul>
         <div id="menu-btn" class="group cursor-pointer space-y-2 md:hidden">
             <div id="line-1" class="h-0.5 w-6 rounded-md bg-black transition duration-300"></div>
@@ -32,14 +32,14 @@
                         class="@if (request()->is('tentang-kami')) font-bold before:content-[''] before:absolute before:-bottom-0.5 before:w-32 before:h-0.5 before:bg-[#3CB1C3] @endif relative inline-block w-max">Tentang
                         Kami</a>
                 </li>
-                <li class="w-max">
+                {{-- <li class="w-max">
                     @if (Auth::check())
                         <a href="{{ route('dashboard') }}" class="w-max rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">{{ Auth::user()->name }}</a>
                     @else
                         <a href="{{ route('login') }}"
                             class="inline-block w-max rounded-md bg-blue-500 px-2 py-1 font-semibold text-white">Login</a>
                     @endif
-                </li>
+                </li> --}}
             </ul>
         </div>
     </nav>

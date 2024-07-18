@@ -8,7 +8,7 @@
         <label for="nama_wisata" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Nama Wisata</span>
             <input type="text" wire:model='nama_wisata' id="nama_wisata" required
-                class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
+                class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500 w-full"
                 placeholder="Masukkan nama wisata">
             @error('nama_wisata')
                 <p class="text-sm text-red-500">{{ $message }}</p>
@@ -24,18 +24,6 @@
                 @endforeach
             </select>
             @error('data_kategori')
-                <p class="text-sm text-red-500">{{ $message }}</p>
-            @enderror
-        </label>
-        <label for="whatsapp" class="col-span-2 flex flex-col gap-0.5">
-            <span class="text-sm font-semibold text-gray-600">No. Whatsapp</span>
-            <div
-                class="flex rounded-md border border-gray-500/50 p-2 text-sm focus-within:ring-1 focus-within:ring-gray-500">
-                <input type="text" wire:model='formatWA' class="w-10 focus:outline-none" readonly tabindex="-1">
-                <input type="text" required wire:model='whatsapp' id="whatsapp" maxlength="11" inputmode="numeric"
-                    class="w-full focus:outline-none" placeholder="Masukkan nomor whatsapp">
-            </div>
-            @error('whatsapp')
                 <p class="text-sm text-red-500">{{ $message }}</p>
             @enderror
         </label>
@@ -134,7 +122,7 @@
         <label for="nama_wisata" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Nama Wisata</span>
             <input type="text" wire:model='nama_wisata' id="nama_wisata"
-                class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500"
+                class="rounded-md border border-gray-500/50 p-2 text-sm focus:outline-gray-500 w-full"
                 placeholder="Masukkan nama wisata">
             @error('nama_wisata')
                 <p class="text-sm text-red-500">{{ $message }}</p>
@@ -153,18 +141,7 @@
                 <p class="text-sm text-red-500">{{ $message }}</p>
             @enderror
         </label>
-        <label for="whatsapp" class="col-span-2 flex flex-col gap-0.5">
-            <span class="text-sm font-semibold text-gray-600">No. Whatsapp</span>
-            <div
-                class="flex rounded-md border border-gray-500/50 p-2 text-sm focus-within:ring-1 focus-within:ring-gray-500">
-                <input type="text" wire:model='formatWA' class="w-10 focus:outline-none" readonly tabindex="-1">
-                <input type="text" wire:model='whatsapp' id="whatsapp" maxlength="11" inputmode="numeric"
-                    class="w-full focus:outline-none" placeholder="Masukkan nomor whatsapp">
-            </div>
-            @error('whatsapp')
-                <p class="text-sm text-red-500">{{ $message }}</p>
-            @enderror
-        </label>
+        
         <label for="harga" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Harga <span>(Opsional)</span></span>
             <input type="text" wire:model='harga' id="harga" maxlength="11" inputmode="numeric"

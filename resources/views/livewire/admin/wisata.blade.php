@@ -1,5 +1,4 @@
 <div class="h-full overflow-auto bg-white">
-
     <div class="fixed left-1/2 top-14 z-50 flex -translate-x-1/2 flex-col gap-3">
         <div id="notif" wire:ignore.self
             class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
@@ -32,6 +31,13 @@
         <div id="deleteNotif" wire:ignore.self
             class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
             Wisata berhasil dihapus
+        </div>
+    </div>
+
+    <div class="fixed left-1/2 top-14 z-50 flex -translate-x-1/2 flex-col gap-3">
+        <div id="addSarana" wire:ignore.self
+            class="pointer-events-none -translate-y-7 rounded-md bg-green-500 p-3 font-semibold text-white opacity-0 transition-all duration-300">
+            Berhasil menambah sarana
         </div>
     </div>
 
@@ -98,8 +104,8 @@
                         <tr class="*:py-6 hover:bg-gray-500/30">
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td class="text-center">
-                                <img loading="lazy" src="{{ asset('storage/gambar-wisata/' . $item->gambar) }}"
-                                    alt="gambar" class="max-w-20 mx-auto">
+                                <img loading="lazy" src="{{ route('img', $item->gambar) }}" alt="gambar"
+                                    class="max-w-20 mx-auto">
                             </td>
                             <td>{{ $item->nama_wisata }}</td>
                             <td>{{ $item->kategori->kategori }}</td>
@@ -107,7 +113,8 @@
                             </td>
                             <td class="text-center">
                                 <div class="flex items-center justify-center gap-5">
-                                    {{-- <button type="button">
+                                    <button type="button" wire:key='{{ $item->id }}'
+                                        wire:click='galleryModal({{ $item->id }})'>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -117,7 +124,21 @@
                                                 d="M8.90983 8.5101C8.90983 8.69008 8.85638 8.86604 8.75638 9.01569C8.65639 9.16533 8.51434 9.28195 8.34806 9.35083C8.18178 9.41971 7.99882 9.43773 7.8223 9.40262C7.64578 9.36751 7.48363 9.28083 7.35636 9.15356C7.22909 9.0263 7.14245 8.86418 7.10734 8.68765C7.07222 8.51113 7.09022 8.32815 7.15909 8.16187C7.22797 7.99558 7.34453 7.85347 7.49418 7.75348C7.64383 7.65349 7.81981 7.6001 7.99979 7.6001C8.1193 7.6001 8.23765 7.62364 8.34806 7.66937C8.45847 7.7151 8.55872 7.78214 8.64323 7.86664C8.72773 7.95114 8.79476 8.05146 8.84049 8.16187C8.88622 8.27227 8.90983 8.3906 8.90983 8.5101Z"
                                                 fill="#00CE15" />
                                         </svg>
-                                    </button> --}}
+                                    </button>
+                                    <button type="button" wire:key='{{ $item->id }}'
+                                        wire:click='addSarana({{ $item->id }})'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24">
+                                            <g fill="none" stroke="green" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2">
+                                                <path
+                                                    d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1l1 1h4m3-.86A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1l-1 1h-3" />
+                                                <path
+                                                    d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25l.7-.7l.71-.71l2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35z" />
+                                                <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14" />
+                                            </g>
+                                        </svg>
+                                    </button>
                                     <button type="button" wire:key='{{ $item->id }}'
                                         wire:click='editWisata({{ $item->id }})'>
                                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
@@ -159,9 +180,14 @@
         </table>
     </section>
 
+
+
     @include('components.wisata-modal')
     @include('components.kategori-modal')
     @include('components.delete-wisataModal')
+
+    @include('components.gallery-modal')
+    @include('components.sarana-modal')
 
 </div>
 

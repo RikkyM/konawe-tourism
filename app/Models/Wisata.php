@@ -17,4 +17,14 @@ class Wisata extends Model
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');
     }
+
+    public function gallery()
+    {
+        return $this->hasMany(Gallery::class);
+    }
+
+    public function sarana()
+    {
+        return $this->hasMany(Sarana::class, 'id_wisata');
+    }
 }

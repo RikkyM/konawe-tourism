@@ -24,7 +24,6 @@
         @this.gambar = '';
         @this.latitude = '';
         @this.longitude = '';
-        @this.whatsapp = '';
         @this.gambar = '';
         imageInput.value = '';
         preview.src = '';
@@ -149,10 +148,6 @@
             this.value = this.value.replace(/[^0-9]/g, '');
         })
     }
-
-    const whatsapp = document.querySelector("#whatsapp");
-
-    NumberOnly(whatsapp);
 
     // kategori dropdown
     const kategoriAdd = document.querySelector('#kategoriAdd')
@@ -306,7 +301,6 @@
         @this.gambar = '';
         @this.latitude = '';
         @this.longitude = '';
-        @this.whatsapp = '';
         @this.kategori_wisata = '';
     })
 
@@ -354,7 +348,6 @@
             @this.harga = '';
             @this.deskripsi = '';
             @this.gambar = '';
-            @this.whatsapp = '';
             if (markerEdit) {
                 mapEdit.removeLayer(markerEdit);
                 markerEdit = null;
@@ -365,6 +358,7 @@
     });
 
     Livewire.on('modalEditWisata', (imgUrl) => {
+
         modalEditWisata.classList.toggle('opacity-0');
         modalEditWisata.classList.toggle('pointer-events-auto');
         modalEditWisata.classList.toggle('pointer-events-none');
@@ -466,7 +460,6 @@
         @this.gambar = '';
         @this.latitude = '';
         @this.longitude = '';
-        @this.whatsapp = '';
         @this.gambar = '';
         imageInput.value = '';
         previewEdit.src = '';
@@ -534,5 +527,116 @@
             deleteNotif.classList.add('opacity-0');
             deleteNotif.classList.add('-translate-y-7');
         }, 3000);
+    })
+
+    const additionalInfo = document.querySelector('#informasiTambahanBg');
+    const additionalModal = document.querySelector('#informasiTambahanModal');
+
+    additionalInfo.addEventListener('click', e => {
+        if (e.target == additionalInfo) {
+            additionalModal.classList.add('opacity-0', 'delay-0');
+            additionalModal.classList.remove('delay-[.3s]')
+            additionalInfo.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
+            additionalInfo.classList.remove('pointer-events-auto');
+        }
+    })
+
+    Livewire.on('information', () => {
+        additionalInfo.classList.toggle('opacity-0')
+        additionalInfo.classList.toggle('pointer-events-auto');
+        additionalInfo.classList.toggle('pointer-events-none');
+
+        additionalModal.classList.toggle('opacity-0');
+        additionalModal.classList.add('delay-[.3s]')
+        additionalModal.classList.remove('delay-0')
+
+        additionalInfo.classList.remove('delay-[.4s]')
+    })
+
+    const deleteGal = document.querySelector('#deleteGallery')
+    const cancelModelGal = document.querySelector('#cancelModalDelGal');
+    const cancelDelGal = document.querySelector('#cancelDelGallery');
+
+    cancelModalDelGal.addEventListener('click', () => {
+        additionalModal.classList.add('opacity-0', 'delay-0');
+        additionalModal.classList.remove('delay-[.3s]')
+        additionalInfo.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
+        additionalInfo.classList.remove('pointer-events-auto');
+
+        @this.imageGallery = [];
+        @this.gallery = '';
+    })
+
+    const saranaBg = document.querySelector('#saranaBg');
+    const saranaModal = document.querySelector('#saranaModal');
+    const cancelModalSarana = document.querySelector('#cancelModalSarana');
+
+    cancelModalSarana.addEventListener('click', () => {
+        saranaModal.classList.add('opacity-0', 'delay-0');
+        saranaModal.classList.remove('delay-[.3s]')
+        saranaBg.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
+        saranaBg.classList.remove('pointer-events-auto');
+        @this.sarana = [];
+    })
+
+    Livewire.on('saranaModal', () => {
+        saranaBg.classList.toggle('opacity-0')
+        saranaBg.classList.toggle('pointer-events-auto');
+        saranaBg.classList.toggle('pointer-events-none');
+
+        saranaModal.classList.toggle('opacity-0');
+        saranaModal.classList.add('delay-[.3s]')
+        saranaModal.classList.remove('delay-0')
+
+        saranaBg.classList.remove('delay-[.4s]')
+    })
+
+    const addSarana = document.querySelector('#addSarana');
+
+    Livewire.on('simpanSarana', () => {
+        saranaModal.classList.add('opacity-0', 'delay-0');
+        saranaModal.classList.remove('delay-[.3s]')
+        saranaBg.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
+        saranaBg.classList.remove('pointer-events-auto');
+
+        addSarana.classList.remove('opacity-0');
+        addSarana.classList.remove('-translate-y-7');
+        setTimeout(() => {
+            addSarana.classList.add('opacity-0');
+            addSarana.classList.add('-translate-y-7');
+        }, 3000);
+    })
+
+    cancelDelGal.addEventListener('click', () => {
+        deleteGal.classList.toggle('opacity-0')
+        deleteGal.classList.toggle('pointer-events-auto')
+        deleteGal.classList.toggle('pointer-events-none')
+        deleteGal.classList.add('-translate-y-5');
+        deleteGal.classList.remove('translate-y-0');
+    })
+
+    Livewire.on('addGallery', () => {
+        additionalModal.classList.add('opacity-0', 'delay-0');
+        additionalModal.classList.remove('delay-[.3s]')
+        additionalInfo.classList.add('opacity-0', 'pointer-events-none', 'delay-[.4s]')
+        additionalInfo.classList.remove('pointer-events-auto');
+
+        @this.imageGallery = [];
+        @this.gallery = '';
+    })
+
+    Livewire.on('deleteGallery', () => {
+        deleteGal.classList.toggle('opacity-0')
+        deleteGal.classList.toggle('pointer-events-auto')
+        deleteGal.classList.toggle('pointer-events-none')
+        deleteGal.classList.add('translate-y-0');
+        deleteGal.classList.remove('-translate-y-5');
+    })
+
+    Livewire.on('doneDeleteGallery', () => {
+        deleteGal.classList.add('opacity-0')
+        deleteGal.classList.add('pointer-events-none')
+        deleteGal.classList.add('-translate-y-5');
+        deleteGal.classList.remove('translate-y-0');
     })
 </script>

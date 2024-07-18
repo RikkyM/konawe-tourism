@@ -11,7 +11,7 @@
             <h2 class="text-center font-bold md:w-max lg:text-xl">Konawe Selatan - Surga Tersembunyi Bumi Anoa</h2>
             <figure
                 class="flex w-[90%] flex-col p-3 md:max-w-3xl md:flex-row-reverse md:items-center md:justify-between md:gap-5 lg:mt-5 lg:w-full lg:max-w-5xl">
-                <img src="{{ asset('assets/img/gambar-1.png') }}" alt="gambar-1"
+                <img src="{{ asset('assets/img/gambar-1.jpg') }}" alt="gambar-1"
                     class="max-w-72 mx-auto w-full rounded-br-[35px] rounded-tl-[35px] md:mx-0 lg:max-w-[450px]">
                 <figcaption class="mt-4 flex flex-col gap-4 md:h-full md:gap-5">
                     <h2 class="mx-auto font-semibold md:mx-0 md:text-lg lg:text-xl">Konawe adalah Permata Tersembunyi</h2>
@@ -29,7 +29,6 @@
             </figure>
         </div>
 
-
         <div class="my-10 grid w-full place-items-center gap-3">
             @if ($topDestinasi->count() > 0)
                 <h2 class="font-bold md:text-lg lg:text-xl" data-aos="fade-up" data-aos-offset="190"
@@ -45,7 +44,7 @@
                                 <div class="group">
                                     <div class="image-container">
                                         <div class="h-60 w-full rounded-t-md bg-cover bg-center duration-500 group-hover:scale-110"
-                                            style="background-image: url({{ asset('storage/gambar-wisata/' . $wisata->gambar) }})">
+                                            style="background-image: url({{ route('img', $wisata->gambar) }})">
                                         </div>
                                     </div>
                                 </div>

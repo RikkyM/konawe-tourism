@@ -60,7 +60,7 @@
                     </footer> --}}
                 </form>
                 <div class="order-1 h-52 w-full rounded-2xl bg-cover lg:order-2 lg:h-full lg:flex-1">
-                    <div style="background-image: url({{ asset('assets/img/gambar-1.png') }})"
+                    <div style="background-image: url({{ asset('assets/img/gambar-1.jpg') }})"
                         class="h-full rounded-2xl bg-cover bg-center bg-no-repeat">
                     </div>
                 </div>

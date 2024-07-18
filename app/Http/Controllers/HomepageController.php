@@ -24,7 +24,9 @@ class HomepageController extends Controller
     }
     public function detail($id) {
 
-        $detail = Wisata::find($id);
+        $detail = Wisata::with('gallery', 'sarana')->find($id);
+
+        // dd($detail);
 
         return view('pages.detail', compact('detail'));
     }

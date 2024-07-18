@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Gallery;
 use App\Models\Kategori;
+use App\Models\Sarana;
 use App\Models\Wisata as ModelsWisata;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,11 +13,15 @@ class Wisata extends Component
 {
     use WithFileUploads;
 
-    public $search, $nama_wisata, $deskripsi, $harga, $whatsapp, $gambar, $latitude, $longitude, $data_kategori, $kategori_wisata, $isChecked = [];
+    public $search, $nama_wisata, $deskripsi, $harga, $gambar, $latitude, $longitude, $data_kategori, $kategori_wisata, $gallery = [], $isChecked = [];
     public $formatWA = '+62';
-    public $kategori_id;
-    public $wisata_id;
-    public $delete_id;
+    public $sarana = [];
+    public $dataSarana;
+    public $saranaPariwisata;
+    public $kategori_id, $wisata_id, $delete_id, $gallery_id, $del_gallery_id, $sarana_id;
+    public $listGallery;
+
+    public $imageGallery = [];
 
     public function favorit($id)
     {
@@ -41,10 +47,10 @@ class Wisata extends Component
             'nama_wisata' => 'required|max:255',
             'data_kategori' => 'required',
             'deskripsi' => 'required',
-            'gambar' => 'required|image|max:5120',
+            'gambar' => 'required|image',
             'latitude' => 'required',
             'longitude' => 'required',
-            'whatsapp' => 'required',
+            
         ], [
             'nama_wisata.required' => 'Nama wisata perlu diisi',
             'data_kategori.required' => 'Kategori perlu diisi',
@@ -52,7 +58,7 @@ class Wisata extends Component
             'gambar.required' => 'Gambar perlu diisi',
             'gambar.max' => 'Maksimal ukuran gambar 5MB',
             'latitude.required' => 'Lokasi perlu diisi',
-            'whatsapp.required' => 'Whatsapp perlu diisi'
+            
         ]);
 
         if ($this->gambar) {
@@ -68,7 +74,6 @@ class Wisata extends Component
             $wisata->gambar = $this->gambar;
             $wisata->latitude = $this->latitude;
             $wisata->longitude = $this->longitude;
-            $wisata->whatsapp = $this->whatsapp;
             $wisata->gambar = $new_photo_name;
             $wisata->favorit = '0';
             $wisata->save();
@@ -80,7 +85,6 @@ class Wisata extends Component
             $this->data_kategori = '';
             $this->latitude = '';
             $this->longitude = '';
-            $this->whatsapp = '';
             $this->gambar = '';
             $this->kategori_wisata;
 
@@ -102,8 +106,7 @@ class Wisata extends Component
         $this->gambar = $wisata->gambar;
         $this->latitude = $wisata->latitude;
         $this->longitude = $wisata->longitude;
-        $this->whatsapp = $wisata->whatsapp;
-        $this->dispatch('modalEditWisata', asset('storage/gambar-wisata/' . $this->gambar));
+        $this->dispatch('modalEditWisata', route('img', $this->gambar));
     }
 
     public function updateWisata()
@@ -115,14 +118,12 @@ class Wisata extends Component
             'gambar' => 'max:5120',
             'latitude' => 'required',
             'longitude' => 'required',
-            'whatsapp' => 'required',
         ], [
             'nama_wisata.required' => 'Nama wisata perlu diisi',
             'data_kategori.required' => 'Kategori perlu diisi',
             'deskripsi.required' => 'Deskripsi perlu diisi',
             'gambar.max' => 'Maksimal ukuran gambar 5MB',
             'latitude.required' => 'Lokasi perlu diisi',
-            'whatsapp.required' => 'Whatsapp perlu diisi'
         ]);
 
         $id = $this->wisata_id;
@@ -142,7 +143,6 @@ class Wisata extends Component
         $wisata->gambar = $new_photo_name;
         $wisata->latitude = $this->latitude ?? $wisata->latitude;
         $wisata->longitude = $this->longitude ?? $wisata->longitude;
-        $wisata->whatsapp = $this->whatsapp ?? $wisata->whatsapp;
         $wisata->favorit = '0';
         $wisata->save();
 
@@ -152,7 +152,6 @@ class Wisata extends Component
         $this->gambar = '';
         $this->latitude = '';
         $this->longitude = '';
-        $this->whatsapp = '';
         $this->kategori_wisata = '';
 
         $this->isChecked[$wisata->id] = false;
@@ -210,6 +209,95 @@ class Wisata extends Component
         $this->delete_id = null;
     }
 
+    public function galleryModal($id)
+    {
+        $this->listGallery = Gallery::where('wisata_id', $id)->get();
+        $this->gallery_id = $id;
+        $this->dispatch('information');
+    }
+
+    public function galleryAdd()
+    {
+        $this->validate([
+            'gallery' => 'required|file|max:5120'
+        ]);
+
+        $id = $this->gallery_id;
+        
+        if (!is_null($this->gallery)) {
+            collect($this->gallery)->map(function ($gal) use ($id) {
+                $name = $gal->hashName();
+                $gal->storeAs('public/gallery', $name);
+
+                $gallery = new Gallery();
+                $gallery->wisata_id = $id;
+                $gallery->gambar = $name;
+                $gallery->save();
+            });
+        }
+
+        $this->dispatch('addGallery');
+    }
+
+    public function deleteGalleryConfirmation($id)
+    {
+        if ($id != '') {
+            $this->del_gallery_id = $id;
+        }
+        
+        $this->dispatch('deleteGallery');
+    }
+
+    public function deleteGallery()
+    {
+        if ($this->del_gallery_id != '') {
+            $id = $this->del_gallery_id;
+            Gallery::find($id)->delete();
+        }
+
+        if (!empty($this->imageGallery)) {
+            Gallery::whereIn('id', $this->imageGallery)->delete();
+        }
+
+        $this->imageGallery = [];
+
+        $this->dispatch('doneDeleteGallery');
+    }
+
+    public function addSarana($id)
+    {
+        $this->sarana_id = $id;
+        $this->sarana[] = '';
+        $this->dataSarana = Sarana::where('id_wisata', $id)->get();
+        $this->dispatch('saranaModal');
+    }
+
+    public function deleteSarana($id)
+    {
+        Sarana::find($id)->delete();
+    }
+
+    public function addInputSarana()
+    {
+        $this->sarana[] = '';
+    }
+
+    public function simpanSarana()
+    {
+        $this->validate([
+            'sarana.*' => 'required|string',
+        ]);
+
+        foreach($this->sarana as $sarana) {
+            Sarana::create([
+                'id_wisata' => $this->sarana_id,
+                'sarana' => $sarana
+            ]);
+        }
+        
+        $this->sarana = [];
+        $this->dispatch('simpanSarana');
+    }
 
     public function render()
     {
@@ -222,7 +310,6 @@ class Wisata extends Component
             ->orWhere('harga', 'like', '%' . $this->search . '%')
             ->orderBy('id', 'DESC')
             ->get();
-
 
         return view('livewire.admin.wisata', compact('data', 'kategori'));
     }

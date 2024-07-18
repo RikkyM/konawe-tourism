@@ -44,20 +44,26 @@
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
                     <button id="resetBtn" wire:click='resetFilter'
                         class="h-max w-max rounded bg-red-500 px-3 py-1.5 text-xs font-semibold text-white">Reset</button>
-                    @foreach ($kategori as $item)
-                        <label class="flex w-max items-center gap-2 text-xs sm:text-sm" wire:poll.1s>
-                            <input value="{{ $item->id }}" wire:model.live="selectKategori" type="checkbox"
-                                class="h-4 w-4 rounded p-2 text-blue-600">
-                            <span>{{ $item->kategori }}</span>
-                        </label>
-                    @endforeach
+                    @if ($kategori->count() > 0)
+                        @foreach ($kategori as $item)
+                            <label class="flex w-max items-center gap-2 text-xs sm:text-sm" wire:poll.1s>
+                                <input value="{{ $item->id }}" wire:model.live="selectKategori" type="checkbox"
+                                    class="h-4 w-4 rounded p-2 text-blue-600">
+                                <span>{{ $item->kategori }}</span>
+                            </label>
+                        @endforeach
+                    @else
+                        <div class="h-44 bg-red-500 w-full relative">
+                            <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-max">Kategori Belum Ditambahkan</span>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 
     <div class="flex gap-1 p-2 text-xs sm:px-14 sm:pt-14 sm:text-sm lg:text-lg">
-        <a href="{{ route('homepage') }}" class="text-[#17A2B8]">Home</a>/<span
+        <a href="{{ route('homepage') }}" class="text-[#17A2B8]">Home</a>/<span wire:ignore
             class="@if (request()->is('destinasi-wisata')) font-semibold @endif">Destinasi Wisata</span>
     </div>
 
@@ -69,8 +75,7 @@
             <p class="text-xs sm:text-sm">Ingin Menjelajah Ke Mana Hari Ini?
             </p>
         </div>
-        <div
-            class="grid w-full w-full max-w-max grid-cols-1 justify-center gap-7 p-5 md:grid-cols-2 lg:grid-cols-3">
+        <div class="grid w-full w-full max-w-max grid-cols-1 justify-center gap-7 p-5 md:grid-cols-2 lg:grid-cols-3">
             {{-- Filter & Search --}}
             @if ($results->count() > 0)
                 @foreach ($results as $item)
@@ -81,7 +86,7 @@
                                 <div class="group">
                                     <div class="image-container">
                                         <div class="h-60 w-full rounded-t-md bg-cover bg-center duration-500 group-hover:scale-110"
-                                            style="background-image: url({{ asset('storage/gambar-wisata/' . $item->gambar) }})">
+                                            style="background-image: url({{ route('img', $item->gambar) }})">
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +100,7 @@
                                     class="mt-3 inline-block text-lg font-bold text-black duration-500">{{ $item->nama_wisata }}</span>
                                 <div class="mt-5 flex items-center justify-between">
                                     <a href="{{ route('detail', $item->id) }}"
-                                        class="before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
+                                        class="select-none before:size-0 hover:before:size-56 relative inline-block w-60 w-full w-full overflow-hidden rounded-sm border border-black bg-transparent px-2 py-1 opacity-0 duration-500 before:absolute before:left-1/2 before:top-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:rounded-full before:bg-black before:transition-all before:duration-[1s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:text-black after:transition-all after:duration-[1s] after:content-['Detail'] hover:after:text-white group-hover:opacity-100">
                                         Detail
                                     </a>
                                 </div>
@@ -104,7 +109,9 @@
                     </div>
                 @endforeach
             @else
-                <div class="col-span-1 md:col-span-2 lg:col-span-3 font-semibold h-44 flex justify-center items-center w-full text-center">Wisata tidak ditemukan</div>
+                <div
+                    class="col-span-1 flex h-44 w-full items-center justify-center text-center font-semibold md:col-span-2 lg:col-span-3">
+                    Wisata tidak ditemukan</div>
             @endif
             {{-- End Filter & Search --}}
 

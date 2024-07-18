@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_kategori')->constrained('kategori')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama_wisata');
-            $table->string('whatsapp');
             $table->string('harga', 6)->nullable();
             $table->text('deskripsi');
             $table->string('latitude');
