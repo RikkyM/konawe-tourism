@@ -24,8 +24,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => "Admin",
-            'email' => 'konawetourism@gmail.com',
-            'password' => Hash::make('konawetourism12345')
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin'),
         ]);
     }
 }
