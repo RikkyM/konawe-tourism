@@ -20,7 +20,7 @@ Konawe Tourism adalah sebuah website yang dirancang untuk mempermudah wisatawan 
 - PHP >= 8.2
 - Composer
 - Node.js dengan npm
-- MySQL atau database lainnya yang didukung
+- MySQL
 
 ## Instalasi
 
