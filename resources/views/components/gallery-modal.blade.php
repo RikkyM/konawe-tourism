@@ -5,9 +5,12 @@
         @csrf
         <label for="galleryInput" class="col-span-2 flex flex-col gap-0.5">
             <span class="text-sm font-semibold text-gray-600">Gallery</span>
-            <input wire:ignore wire:model='gallery' type="file" multiple id="galleryInput" accept=".jpg,.jpeg,.png"
+            <input wire:model='gallery' type="file" multiple id="galleryInput" accept=".jpg,.jpeg,.png"
                 class="my-1 w-full rounded-md text-sm file:mr-3 file:rounded file:border-none file:bg-blue-500 file:px-4 file:py-2 file:text-white focus:outline-gray-500"
                 placeholder="Masukkan nama wisata">
+            <div wire:loading wire:target='gallery'>
+                uploading...
+            </div>
             @error('gallery')
                 <p class="text-sm text-red-500">{{ $message }}</p>
             @enderror
@@ -33,11 +36,19 @@
         </div>
 
         <div class="col-span-2 row-start-3 flex justify-center gap-3">
+<<<<<<< HEAD
             <button wire:ignore.self class="rounded bg-gray-500 px-5 py-2 font-semibold text-white" wire:loading wire:target="gallery"
                 disabled>Loading...</button>
             <button wire:ignore.self type="button" wire:click='galleryAdd' wire:loading.disable wire:target='gallery'
                 class="rounded bg-blue-500 px-5 py-2 font-semibold text-white" wire:loading.remove
                 wire:target='gallery'>Tambah</button>
+=======
+            <button class="rounded bg-gray-500 px-5 py-2 font-semibold text-white" wire:loading wire:target="gallery"
+                disabled>Loading...</button>
+            <button type="button" wire:click='galleryAdd' wire:loading.disable wire:target='gallery'
+                class="rounded bg-blue-500 px-5 py-2 font-semibold text-white" wire:loading.remove
+                wire:target="gallery">Tambah</button>
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
             <button id="cancelModalDelGal" type="button"
                 class="rounded bg-red-500 px-5 py-2 font-semibold text-white">Batal</button>
         </div>

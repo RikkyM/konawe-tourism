@@ -53,7 +53,7 @@
                             </label>
                         @endforeach
                     @else
-                        <div class="h-44 w-full relative">
+                        <div class="h-44 bg-red-500 w-full relative">
                             <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-max">Kategori Belum Ditambahkan</span>
                         </div>
                     @endif

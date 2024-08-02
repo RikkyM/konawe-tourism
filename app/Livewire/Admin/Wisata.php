@@ -13,7 +13,11 @@ class Wisata extends Component
 {
     use WithFileUploads;
 
+<<<<<<< HEAD
     public $search, $nama_wisata, $deskripsi, $harga, $gambar, $latitude, $longitude, $data_kategori, $kategori_wisata, $gallery, $isChecked = [];
+=======
+    public $search, $nama_wisata, $deskripsi, $harga, $gambar, $latitude, $longitude, $data_kategori, $kategori_wisata, $gallery = [], $isChecked = [];
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
     public $formatWA = '+62';
     public $sarana = [];
     public $dataSarana;
@@ -50,7 +54,11 @@ class Wisata extends Component
             'gambar' => 'required|image',
             'latitude' => 'required',
             'longitude' => 'required',
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
         ], [
             'nama_wisata.required' => 'Nama wisata perlu diisi',
             'data_kategori.required' => 'Kategori perlu diisi',
@@ -58,7 +66,11 @@ class Wisata extends Component
             'gambar.required' => 'Gambar perlu diisi',
             'gambar.max' => 'Maksimal ukuran gambar 5MB',
             'latitude.required' => 'Lokasi perlu diisi',
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
         ]);
 
         if ($this->gambar) {
@@ -219,6 +231,7 @@ class Wisata extends Component
     public function galleryAdd()
     {
         $this->validate([
+<<<<<<< HEAD
             'gallery' => 'required|max:5120'
         ]);
 
@@ -232,6 +245,23 @@ class Wisata extends Component
             $gallery->wisata_id = $id;
             $gallery->gambar = $name;
             $gallery->save();
+=======
+            'gallery' => 'required|file|max:5120'
+        ]);
+
+        $id = $this->gallery_id;
+        
+        if (!is_null($this->gallery)) {
+            collect($this->gallery)->map(function ($gal) use ($id) {
+                $name = $gal->hashName();
+                $gal->storeAs('public/gallery', $name);
+
+                $gallery = new Gallery();
+                $gallery->wisata_id = $id;
+                $gallery->gambar = $name;
+                $gallery->save();
+            });
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
         }
 
         $this->dispatch('addGallery');
@@ -242,7 +272,11 @@ class Wisata extends Component
         if ($id != '') {
             $this->del_gallery_id = $id;
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
         $this->dispatch('deleteGallery');
     }
 
@@ -286,13 +320,21 @@ class Wisata extends Component
             'sarana.*' => 'required|string',
         ]);
 
+<<<<<<< HEAD
         foreach ($this->sarana as $sarana) {
+=======
+        foreach($this->sarana as $sarana) {
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
             Sarana::create([
                 'id_wisata' => $this->sarana_id,
                 'sarana' => $sarana
             ]);
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 258c3df4ededd8efa1f832e95db3dbb9a773cc1f
         $this->sarana = [];
         $this->dispatch('simpanSarana');
     }
